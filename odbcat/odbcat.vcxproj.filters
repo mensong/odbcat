@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="imp">
+      <UniqueIdentifier>{89e64cb0-ba15-4114-a5d4-22f13efc572e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="odbccpp">
+      <UniqueIdentifier>{ca730647-50e4-4f37-a4a4-bcb7b2b55a8c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="odbcat.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CatConnectionImp.h">
+      <Filter>imp</Filter>
+    </ClInclude>
+    <ClInclude Include="CatEnvironmentImp.h">
+      <Filter>imp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\Config.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\Connection.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\DatabaseMetaData.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\DatabaseMetaDataBase.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\DatabaseMetaDataUnicode.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\Environment.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\Exception.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\Forwards.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\ParameterMetaData.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\PreparedStatement.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\RefCounted.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\ResultSet.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\ResultSetMetaData.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\ResultSetMetaDataBase.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\ResultSetMetaDataUnicode.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\Statement.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\StatementBase.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\StringConverter.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\Types.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\Util.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\internal\Batch.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\internal\Macros.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\internal\Odbc.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\internal\ParameterData.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\internal\TypeInfo.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\odbc-cpp-wrapper\src\odbc\internal\UtilInternal.h">
+      <Filter>odbccpp</Filter>
+    </ClInclude>
+    <ClInclude Include="CatResultSetMetaDataImp.h">
+      <Filter>imp</Filter>
+    </ClInclude>
+    <ClInclude Include="CatResultSetMetaDataUnicodeImp.h">
+      <Filter>imp</Filter>
+    </ClInclude>
+    <ClInclude Include="CatResultSetImp.h">
+      <Filter>imp</Filter>
+    </ClInclude>
+    <ClInclude Include="CatStatementImp.h">
+      <Filter>imp</Filter>
+    </ClInclude>
+    <ClInclude Include="CatParameterMetaDataImp.h">
+      <Filter>imp</Filter>
+    </ClInclude>
+    <ClInclude Include="CatDatabaseMetaDataImp.h">
+      <Filter>imp</Filter>
+    </ClInclude>
+    <ClInclude Include="CatPreparedStatementImp.h">
+      <Filter>imp</Filter>
+    </ClInclude>
+    <ClInclude Include="CatDatabaseMetaDataUnicodeImp.h">
+      <Filter>imp</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="odbcat.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CatConnectionImp.cpp">
+      <Filter>imp</Filter>
+    </ClCompile>
+    <ClCompile Include="CatEnvironmentImp.cpp">
+      <Filter>imp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\Connection.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\DatabaseMetaData.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\DatabaseMetaDataBase.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\DatabaseMetaDataUnicode.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\Environment.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\Exception.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\ParameterMetaData.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\PreparedStatement.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\RefCounted.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\ResultSet.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\ResultSetMetaData.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\ResultSetMetaDataBase.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\ResultSetMetaDataUnicode.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\Statement.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\StatementBase.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\StringConverter.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\Types.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\Util.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\internal\Batch.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\internal\ParameterData.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\odbc-cpp-wrapper\src\odbc\internal\UtilInternal.cpp">
+      <Filter>odbccpp</Filter>
+    </ClCompile>
+    <ClCompile Include="CatResultSetMetaDataImp.cpp">
+      <Filter>imp</Filter>
+    </ClCompile>
+    <ClCompile Include="CatResultSetMetaDataUnicodeImp.cpp">
+      <Filter>imp</Filter>
+    </ClCompile>
+    <ClCompile Include="CatResultSetImp.cpp">
+      <Filter>imp</Filter>
+    </ClCompile>
+    <ClCompile Include="CatStatementImp.cpp">
+      <Filter>imp</Filter>
+    </ClCompile>
+    <ClCompile Include="CatParameterMetaDataImp.cpp">
+      <Filter>imp</Filter>
+    </ClCompile>
+    <ClCompile Include="CatDatabaseMetaDataImp.cpp">
+      <Filter>imp</Filter>
+    </ClCompile>
+    <ClCompile Include="CatPreparedStatementImp.cpp">
+      <Filter>imp</Filter>
+    </ClCompile>
+    <ClCompile Include="CatDatabaseMetaDataUnicodeImp.cpp">
+      <Filter>imp</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\odbc-cpp-wrapper\src\odbc\CMakeLists.txt">
+      <Filter>odbccpp</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

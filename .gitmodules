@@ -1,0 +1,3 @@
+[submodule "odbc-cpp-wrapper"]
+	path = odbc-cpp-wrapper
+	url = https://github.com/mensong/odbc-cpp-wrapper.git
