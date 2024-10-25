@@ -19,6 +19,10 @@ public:
 		const wchar_t* driver = NULL, ConfigDsnAction action = AddDSN) override;
 	virtual bool configDSNByFile(const wchar_t* dsnFile, const wchar_t* DSNName, 
 		const wchar_t* driver = NULL, ConfigDsnAction action = AddDSN) override;
+	virtual bool isDriverInstalled(const char* driver) override;
+	virtual CatDataSourceInformations* getDataSources() override;
+	virtual CatDataSourceInformations* getDataSources(CatDSNType dsnType) override;
+	virtual CatDriverInformations* getDrivers() override;
 
 protected:
 	EnvironmentRef m_raw;

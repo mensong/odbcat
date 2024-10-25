@@ -194,6 +194,9 @@
     <ClInclude Include="CatConnectionImp.h" />
     <ClInclude Include="CatDatabaseMetaDataImp.h" />
     <ClInclude Include="CatDatabaseMetaDataUnicodeImp.h" />
+    <ClInclude Include="CatDataSourceInformationsImp.h" />
+    <ClInclude Include="CatDriverInformationAttributesImp.h" />
+    <ClInclude Include="CatDriverInformationsImp.h" />
     <ClInclude Include="CatEnvironmentImp.h" />
     <ClInclude Include="CatParameterMetaDataImp.h" />
     <ClInclude Include="CatPreparedStatementImp.h" />
@@ -335,6 +338,9 @@
     <ClCompile Include="CatConnectionImp.cpp" />
     <ClCompile Include="CatDatabaseMetaDataImp.cpp" />
     <ClCompile Include="CatDatabaseMetaDataUnicodeImp.cpp" />
+    <ClCompile Include="CatDataSourceInformationsImp.cpp" />
+    <ClCompile Include="CatDriverInformationAttributesImp.cpp" />
+    <ClCompile Include="CatDriverInformationsImp.cpp" />
     <ClCompile Include="CatEnvironmentImp.cpp" />
     <ClCompile Include="CatParameterMetaDataImp.cpp" />
     <ClCompile Include="CatPreparedStatementImp.cpp" />

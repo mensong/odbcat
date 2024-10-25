@@ -8,9 +8,37 @@
 
 int main()
 {
-    auto odbc = odbcat::Ins().CreateEnvironment();
+    auto env = odbcat::Ins().CreateEnvironment();
 
-    bool b = odbc->configDSN(
+    auto drivers = env->getDrivers();
+    for (int i = 0; i < drivers->count(); i++)
+    {
+        std::cout << i << ':' << drivers->description(i) << std::endl;
+        auto attis = drivers->attributes(i);
+
+        for (int j = 0; j < attis->count(); j++)
+        {
+            std::cout << attis->name(j) << ':' << attis->value(j) << std::endl;
+        }
+
+        std::cout << std::endl;
+    }
+    odbcat::Ins().CatFreeT(&drivers);
+
+    auto dss = env->getDataSources();
+    for (int i = 0; i < dss->count(); i++)
+    {
+        std::cout << dss->name(i) << ':' << dss->description(i) << std::endl;
+    }
+    odbcat::Ins().CatFreeT(&dss);
+
+
+    if (env->isDriverInstalled("Microsoft Access Driver (*.mdb, *.accdb)"))
+    {
+        std::cout << "Microsoft Access Driver (*.mdb, *.accdb) 已安装" << std::endl;
+    }
+
+    bool b = env->configDSN(
         L"DSN=MyDSN\0"
         L"DRIVER=Microsoft Access Driver (*.mdb, *.accdb)\0"
         L"UID=\0"
@@ -27,7 +55,7 @@ int main()
         L"\0", NULL, CatEnvironment::AddDSN);
     CHECK_E();
 
-    auto conn = odbc->createConnection();
+    auto conn = env->createConnection();
     CHECK_E();
     b = conn->connectByDSNName("MyDSN");
     CHECK_E();
@@ -68,7 +96,7 @@ int main()
     odbcat::Ins().CatFreeT(&res);
     odbcat::Ins().CatFreeT(&stmt);
     odbcat::Ins().CatFreeT(&conn);
-    odbcat::Ins().CatFreeT(&odbc);
+    odbcat::Ins().CatFreeT(&env);
 
     return 0;
 }

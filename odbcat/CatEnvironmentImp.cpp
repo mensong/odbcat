@@ -3,6 +3,8 @@
 #include "CatConnectionImp.h"
 #include <odbcinst.h>
 #include <algorithm>
+#include "CatDataSourceInformationsImp.h"
+#include "CatDriverInformationsImp.h"
 #pragma comment(lib, "legacy_stdio_definitions.lib")
 
 using namespace odbc;
@@ -127,4 +129,37 @@ bool CatEnvironmentImp::configDSNByFile(const wchar_t* dsnFile, const wchar_t* D
     attString.append(1, '\0');
 
     return configDSN(&attString[0], driver, action);
+}
+
+bool CatEnvironmentImp::isDriverInstalled(const char* driver)
+{
+    g_hasError = false;
+    try
+    {
+        return m_raw->isDriverInstalled(driver);
+    }
+    catch (const std::exception& ex)
+    {
+        g_hasError = true;
+        g_errorMsg = ex.what();
+        return false;
+    }
+}
+
+CatDataSourceInformations* CatEnvironmentImp::getDataSources()
+{
+    std::vector<DataSourceInformation> info = m_raw->getDataSources();
+    return new CatDataSourceInformationsImp(info);
+}
+
+CatDataSourceInformations* CatEnvironmentImp::getDataSources(CatDSNType dsnType)
+{
+    std::vector<DataSourceInformation> info = m_raw->getDataSources((DSNType)dsnType);
+    return new CatDataSourceInformationsImp(info);
+}
+
+CatDriverInformations* CatEnvironmentImp::getDrivers()
+{
+    std::vector<DriverInformation> info = m_raw->getDrivers();
+    return new CatDriverInformationsImp(info);
 }

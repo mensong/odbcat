@@ -122,6 +122,88 @@ enum CatRowIdentifierType
     ROWVER
 };
 
+/**
+ *  Specifies the type of an ODBC DSN.
+ */
+enum CatDSNType
+{
+    /**
+     * Indicates that both user and system DSNs will be returned.
+     */
+    ALL_DSN,
+    /**
+     * Indicates that only system DSNs will be returned.
+     */
+    SYSTEM_DSN,
+    /**
+     * Indicates that only user DSNs will be returned.
+     */
+    USER_DSN
+};
+
+class CatDataSourceInformations
+{
+public:
+    /**
+     * count informations
+     */
+    virtual int count() = 0;
+
+    /**
+     * The data source name.
+     *
+     * For example, dBASE Files or SQL Server.
+     */
+    virtual const char* name(int idx) = 0;
+
+    /**
+     * The description of the driver associated with the data source.
+     *
+     * For example, Microsoft Access dBASE Driver (*.dbf, *.ndx, *.mdx).
+     */
+    virtual const char* description(int idx) = 0;
+};
+
+class CatDriverInformationAttributes
+{
+public:
+    /**
+     * count Attributes
+     */
+    virtual int count() = 0;
+
+    /**
+     * The attribute's name.
+     */
+    virtual const char* name(int idx) = 0;
+
+    /**
+     * The attribute's value.
+     */
+    virtual const char* value(int idx) = 0;
+};
+
+class CatDriverInformations
+{
+public:
+    /**
+     * count informations
+     */
+    virtual int count() = 0;
+
+    /**
+     * The driver description.
+     *
+     * For example, PostgreSQL Unicode(x64) or SQL Server.
+     */
+    virtual const char* description(int idx) = 0;
+
+    /**
+     * The list of driver attributes.
+     */
+    virtual CatDriverInformationAttributes* attributes(int idx) = 0;
+};
+
 class CatResultSetMetaData
 {
 public:
@@ -2255,6 +2337,36 @@ public:
      */
     virtual bool configDSNByFile(const wchar_t* dsnFile, const wchar_t* DSNName, 
         const wchar_t* driver = NULL, ConfigDsnAction action = AddDSN) = 0;
+
+    /**
+     * Retrieves information about available data sources.
+     *
+     * @return  Returns a full list of DataSourceInformation objects.
+     */
+    virtual CatDataSourceInformations* getDataSources() = 0;
+
+    /**
+     * Retrieves information about available data sources of the specified type.
+     *
+     * @param dsnType  Specifies the type of the returned ODBC DSNs.
+     * @return         Returns a list of DataSourceInformation objects.
+     */
+    virtual CatDataSourceInformations* getDataSources(CatDSNType dsnType) = 0;
+
+    /**
+     * Retrieves information about available drivers.
+     *
+     * @return  Returns a list of DriverInformation objects.
+     */
+    virtual CatDriverInformations* getDrivers() = 0;
+
+    /**
+    * Gets a value indicating whether the given driver is installed or not.
+    *
+    * @param name  The driver name.
+    * @return      Returns true if the driver is installed, otherwise false.
+    */
+    virtual bool isDriverInstalled(const char* driver) = 0;
 };
 
 ODBCAT_API CatEnvironment* CreateEnvironment();
