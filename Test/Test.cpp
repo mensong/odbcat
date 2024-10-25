@@ -24,6 +24,7 @@ int main()
         std::cout << std::endl;
     }
     odbcat::Ins().CatFreeT(&drivers);
+    std::cout << std::endl;
 
     auto dss = env->getDataSources();
     for (int i = 0; i < dss->count(); i++)
@@ -31,12 +32,13 @@ int main()
         std::cout << dss->name(i) << ':' << dss->description(i) << std::endl;
     }
     odbcat::Ins().CatFreeT(&dss);
-
+    std::cout << std::endl;
 
     if (env->isDriverInstalled("Microsoft Access Driver (*.mdb, *.accdb)"))
     {
         std::cout << "Microsoft Access Driver (*.mdb, *.accdb) 已安装" << std::endl;
     }
+    std::cout << std::endl;
 
     bool b = env->configDSN(
         L"DSN=MyDSN\0"
