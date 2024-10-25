@@ -2208,6 +2208,16 @@ public:
 class CatEnvironment
 {
 public:
+    enum ConfigDsnAction
+    {
+        AddDSN,
+        ConfigDSN,
+        RemoveDSN,
+
+        AddSysDSN,
+        ConfigSysDSN,
+        RemoveSysDSN,
+    };
     /**
      * Creates a new Connection object.
      *
@@ -2234,7 +2244,8 @@ public:
             L"DBQ=E:\\Database1.mdb\0"
             L"\0"
      */
-    virtual bool createDSN(const wchar_t* attributesString, const wchar_t* driver = NULL, bool sysDsn = false) = 0;
+    virtual bool configDSN(const wchar_t* attributesString, 
+        const wchar_t* driver = NULL, ConfigDsnAction action = AddDSN) = 0;
 
     /**
      * Create a DSN
@@ -2242,7 +2253,8 @@ public:
      * @param dsnFile dsn file create by C:\Windows\System32\odbcad32.exe (64bit) C:\Windows\SysWOW64\odbcad32.exe(32bit)
      * @param DSNName set DSN attribute
      */
-    virtual bool createDSNByFile(const wchar_t* dsnFile, const wchar_t* DSNName, const wchar_t* driver = NULL, bool sysDsn = false) = 0;
+    virtual bool configDSNByFile(const wchar_t* dsnFile, const wchar_t* DSNName, 
+        const wchar_t* driver = NULL, ConfigDsnAction action = AddDSN) = 0;
 };
 
 ODBCAT_API CatEnvironment* CreateEnvironment();

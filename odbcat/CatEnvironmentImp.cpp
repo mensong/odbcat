@@ -40,8 +40,8 @@ CatConnection* CatEnvironmentImp::createConnection()
     }
 }
 
-bool CatEnvironmentImp::createDSN(const wchar_t* attributesString, 
-    const wchar_t* driver/* = NULL*/, bool sysDsn/* = false*/)
+bool CatEnvironmentImp::configDSN(const wchar_t* attributesString, 
+    const wchar_t* driver/* = NULL*/, ConfigDsnAction action/* = AddDSN*/)
 {
     g_hasError = false;
 
@@ -69,7 +69,32 @@ bool CatEnvironmentImp::createDSN(const wchar_t* attributesString,
         }
     }
 
-	if (!SQLConfigDataSourceW(NULL, (sysDsn ? ODBC_ADD_SYS_DSN : ODBC_ADD_DSN), sDriver.c_str(), attributesString))
+    WORD flag = ODBC_ADD_DSN;
+    switch (action)
+    {
+    case CatEnvironment::AddDSN:
+        flag = ODBC_ADD_DSN;
+        break;
+    case CatEnvironment::ConfigDSN:
+        flag = ODBC_CONFIG_DSN;
+        break;
+    case CatEnvironment::RemoveDSN:
+        flag = ODBC_REMOVE_DSN;
+        break;
+    case CatEnvironment::AddSysDSN:
+        flag = ODBC_ADD_SYS_DSN;
+        break;
+    case CatEnvironment::ConfigSysDSN:
+        flag = ODBC_CONFIG_SYS_DSN;
+        break;
+    case CatEnvironment::RemoveSysDSN:
+        flag = ODBC_REMOVE_SYS_DSN;
+        break;
+    default:
+        break;
+    }
+
+	if (!SQLConfigDataSourceW(NULL, flag, sDriver.c_str(), attributesString))
     {
         g_hasError = true;
         DWORD err = GetLastError();
@@ -79,8 +104,8 @@ bool CatEnvironmentImp::createDSN(const wchar_t* attributesString,
     return true;
 }
 
-bool CatEnvironmentImp::createDSNByFile(const wchar_t* dsnFile, const wchar_t* DSNName,
-    const wchar_t* driver/* = NULL*/, bool sysDsn/* = false*/)
+bool CatEnvironmentImp::configDSNByFile(const wchar_t* dsnFile, const wchar_t* DSNName,
+    const wchar_t* driver/* = NULL*/, ConfigDsnAction action/* = AddDSN*/)
 {
     std::wstring attString;
 
@@ -101,5 +126,5 @@ bool CatEnvironmentImp::createDSNByFile(const wchar_t* dsnFile, const wchar_t* D
     delete[] sz;
     attString.append(1, '\0');
 
-    return createDSN(&attString[0], driver, sysDsn);
+    return configDSN(&attString[0], driver, action);
 }

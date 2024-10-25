@@ -4,11 +4,13 @@
 #include <iostream>
 #include "..\odbcat\odbcat.h"
 
+#define CHECK_E() if (odbcat::Ins().HasError()) {std::cout << odbcat::Ins().GetError() << std::endl; return 1;}
+
 int main()
 {
     auto odbc = odbcat::Ins().CreateEnvironment();
 
-    bool b = odbc->createDSN(
+    bool b = odbc->configDSN(
         L"DSN=MyDSN\0"
         L"DRIVER=Microsoft Access Driver (*.mdb, *.accdb)\0"
         L"UID=\0"
@@ -22,16 +24,18 @@ int main()
         L"DriverId=25\0"
         L"DefaultDir=E:\\\0"
         L"DBQ=E:\\Database1.mdb\0"
-        L"\0");
+        L"\0", NULL, CatEnvironment::AddDSN);
+    CHECK_E();
 
     auto conn = odbc->createConnection();
+    CHECK_E();
     b = conn->connectByDSNName("MyDSN");
-    b = odbcat::Ins().HasError();
-    std::string errMsg = odbcat::Ins().GetError();
+    CHECK_E();
     b = conn->connected();
     auto stmt = conn->createStatement();
+    CHECK_E();
     auto res = stmt->executeQuery("SELECT * from tab1;");
-    errMsg = odbcat::Ins().GetError();
+    CHECK_E();
 
     auto md = res->getMetaData();
     int colCount = md->getColumnCount();
