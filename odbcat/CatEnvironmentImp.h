@@ -15,8 +15,11 @@ public:
 public:
 	// Í¨¹ý CatEnvironment ¼Ì³Ð
 	virtual CatConnection* createConnection() override;
+	virtual bool createDSN(const wchar_t* attributesString, const wchar_t* driver = NULL, bool sysDsn = false) override;
+	virtual bool createDSNByFile(const wchar_t* dsnFile, const wchar_t* DSNName, const wchar_t* driver = NULL, bool sysDsn = false) override;
 
 protected:
 	EnvironmentRef m_raw;
+
 };
 

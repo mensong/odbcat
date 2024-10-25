@@ -2214,6 +2214,35 @@ public:
      * @return  Returns a reference to the newly created Connection object.
      */
     virtual CatConnection* createConnection() = 0;
+
+    /**
+     * Create a DSN
+     * @param driver driver name. example:Microsoft Access Driver (*.mdb, *.accdb)
+     * @param attributesString split with "\0" and end with two "\0". example:
+            L"DSN=MyDSN\0"
+            L"DRIVER=Microsoft Access Driver (*.mdb, *.accdb)\0"
+            L"UID=\0"
+            L"UserCommitSync=Yes\0"
+            L"Threads=3\0"
+            L"SafeTransactions=0\0"
+            L"PageTimeout=5\0"
+            L"MaxScanRows=8\0"
+            L"MaxBufferSize=2048\0"
+            L"FIL=MS Access\0"
+            L"DriverId=25\0"
+            L"DefaultDir=E:\\\0"
+            L"DBQ=E:\\Database1.mdb\0"
+            L"\0"
+     */
+    virtual bool createDSN(const wchar_t* attributesString, const wchar_t* driver = NULL, bool sysDsn = false) = 0;
+
+    /**
+     * Create a DSN
+     * @param driver driver name. example:Microsoft Access Driver (*.mdb, *.accdb)
+     * @param dsnFile dsn file create by C:\Windows\System32\odbcad32.exe (64bit) C:\Windows\SysWOW64\odbcad32.exe(32bit)
+     * @param DSNName set DSN attribute
+     */
+    virtual bool createDSNByFile(const wchar_t* dsnFile, const wchar_t* DSNName, const wchar_t* driver = NULL, bool sysDsn = false) = 0;
 };
 
 ODBCAT_API CatEnvironment* CreateEnvironment();
