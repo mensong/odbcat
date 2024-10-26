@@ -2458,5 +2458,23 @@ public:
 
 private:
 	HMODULE hDll;
+
+public:
+    class Scope
+    {
+    public:
+        Scope(CatBase* pp)
+            : m_pp(pp)
+        {
+        }
+        ~Scope()
+        {
+            odbcat::Ins().CatFree(&m_pp);
+        }
+
+        CatBase* m_pp;
+    };
+
+#define CATSCOPE(p) odbcat::Scope _scope_ ## p (dynamic_cast<CatBase*>(p))
 };
 

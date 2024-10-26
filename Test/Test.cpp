@@ -9,6 +9,7 @@
 int main()
 {
     auto env = odbcat::Ins().CreateEnvironment();
+    CATSCOPE(env);
 
     auto drivers = env->getDrivers();
     for (int i = 0; i < drivers->count(); i++)
@@ -55,9 +56,13 @@ int main()
         L"DefaultDir=E:\\\0"
         L"DBQ=E:\\Database1.mdb\0"
         L"\0", NULL, CatEnvironment::AddDSN);
+    //b = env->configDSN(
+    //    L"DSN=MyDSN\0"
+    //    L"\0", L"Microsoft Access Driver (*.mdb, *.accdb)", CatEnvironment::RemoveDSN);
     CHECK_E();
 
     auto conn = env->createConnection();
+    CATSCOPE(conn);
     CHECK_E();
     b = conn->connectByDSNName("MyDSN");
     CHECK_E();
@@ -98,7 +103,7 @@ int main()
     odbcat::Ins().CatFreeT(&res);
     odbcat::Ins().CatFreeT(&stmt);
     odbcat::Ins().CatFreeT(&conn);
-    odbcat::Ins().CatFreeT(&env);
+    //odbcat::Ins().CatFreeT(&env);
 
     return 0;
 }
