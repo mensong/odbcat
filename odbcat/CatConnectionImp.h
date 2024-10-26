@@ -6,8 +6,9 @@
 using namespace odbc;
 
 class CatConnectionImp
-	: public CatConnection
-	, public CatBase
+	: public CatBase
+	, public CatConnection
+	
 {
 public:
 	CatConnectionImp(ConnectionRef ref);

@@ -7,8 +7,8 @@
 using namespace odbc;
 
 class CatDataSourceInformationsImp
-	: public CatDataSourceInformations
-	, public CatBase
+	: public CatBase
+	, public CatDataSourceInformations
 {
 public:
 	CatDataSourceInformationsImp(std::vector<DataSourceInformation>& ref);

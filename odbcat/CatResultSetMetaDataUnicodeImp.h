@@ -6,8 +6,8 @@
 using namespace odbc;
 
 class CatResultSetMetaDataUnicodeImp
-	: public CatResultSetMetaDataUnicode
-	, public CatBase
+	: public CatBase
+	, public CatResultSetMetaDataUnicode
 {
 public:
 	CatResultSetMetaDataUnicodeImp(ResultSetMetaDataUnicodeRef ref);

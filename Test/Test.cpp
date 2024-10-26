@@ -102,7 +102,7 @@ int main()
     odbcat::Ins().CatFreeT(&md);
     odbcat::Ins().CatFreeT(&res);
     odbcat::Ins().CatFreeT(&stmt);
-    odbcat::Ins().CatFreeT(&conn);
+    //odbcat::Ins().CatFreeT(&conn);
     //odbcat::Ins().CatFreeT(&env);
 
     return 0;

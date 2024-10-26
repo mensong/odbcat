@@ -6,8 +6,8 @@
 using namespace odbc;
 
 class CatEnvironmentImp
-	: public CatEnvironment
-	, public CatBase
+	: public CatBase
+	, public CatEnvironment
 {
 public:
 	CatEnvironmentImp();

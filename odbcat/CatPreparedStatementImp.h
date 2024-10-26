@@ -6,8 +6,8 @@
 using namespace odbc;
 
 class CatPreparedStatementImp
-	: public CatPreparedStatement
-	, public CatBase
+	: public CatBase
+	, public CatPreparedStatement
 {
 public:
 	CatPreparedStatementImp(PreparedStatementRef ref);

@@ -6,8 +6,8 @@
 using namespace odbc;
 
 class CatDatabaseMetaDataUnicodeImp
-	: public CatDatabaseMetaDataUnicode
-	, public CatBase
+	: public CatBase
+	, public CatDatabaseMetaDataUnicode
 {
 public:
 	CatDatabaseMetaDataUnicodeImp(DatabaseMetaDataUnicodeRef ref);

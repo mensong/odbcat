@@ -6,8 +6,8 @@
 using namespace odbc;
 
 class CatResultSetImp
-	: public CatResultSet
-	, public CatBase
+	: public CatBase
+	, public CatResultSet
 {
 public:
 	CatResultSetImp(ResultSetRef ref);
