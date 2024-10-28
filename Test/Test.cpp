@@ -59,7 +59,7 @@ int main()
     //    L"\0", NULL, CatEnvironment::ConfigDSN);
 
     std::vector<std::wstring> iniKeys;
-    iniKeys.push_back(L"DSN=MeiCloud");
+    iniKeys.push_back(L"DSN=MyDSN");
     iniKeys.push_back(L"DRIVER=Microsoft Access Driver (*.mdb, *.accdb)");
     iniKeys.push_back(L"UID=");
     iniKeys.push_back(L"UserCommitSync=Yes");
@@ -89,7 +89,7 @@ int main()
     auto conn = env->createConnection();
     CATSCOPE(conn);
     CHECK_E();
-    b = conn->connectByDSNName("MeiCloud");
+    b = conn->connectByDSNName("MyDSN");
     CHECK_E();
     b = conn->connected();
     auto stmt = conn->createStatement();
