@@ -141,11 +141,11 @@
     <ClInclude Include="CatDataSourceInformationsImp.h">
       <Filter>imp</Filter>
     </ClInclude>
-    <ClInclude Include="CatDriverInformationsImp.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="CatDriverInformationAttributesImp.h">
-      <Filter>头文件</Filter>
+      <Filter>imp</Filter>
+    </ClInclude>
+    <ClInclude Include="CatDriverInformationsImp.h">
+      <Filter>imp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -254,11 +254,11 @@
     <ClCompile Include="CatDataSourceInformationsImp.cpp">
       <Filter>imp</Filter>
     </ClCompile>
-    <ClCompile Include="CatDriverInformationsImp.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="CatDriverInformationAttributesImp.cpp">
-      <Filter>源文件</Filter>
+      <Filter>imp</Filter>
+    </ClCompile>
+    <ClCompile Include="CatDriverInformationsImp.cpp">
+      <Filter>imp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

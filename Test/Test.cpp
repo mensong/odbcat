@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <vector>
 #include "..\odbcat\odbcat.h"
 
 #define CHECK_E() if (odbcat::Ins().HasError()) {std::cout << odbcat::Ins().GetError() << std::endl; return 1;}
@@ -41,38 +42,65 @@ int main()
     }
     std::cout << std::endl;
 
-    bool b = env->configDSN(
-        L"DSN=MyDSN\0"
-        L"DRIVER=Microsoft Access Driver (*.mdb, *.accdb)\0"
-        L"UID=\0"
-        L"UserCommitSync=Yes\0"
-        L"Threads=3\0"
-        L"SafeTransactions=0\0"
-        L"PageTimeout=5\0"
-        L"MaxScanRows=8\0"
-        L"MaxBufferSize=2048\0"
-        L"FIL=MS Access\0"
-        L"DriverId=25\0"
-        L"DefaultDir=E:\\\0"
-        L"DBQ=E:\\Database1.mdb\0"
-        L"\0", NULL, CatEnvironment::AddDSN);
+    //bool b = env->configDSN(
+    //    L"DSN=MyDSN\0"
+    //    L"DRIVER=Microsoft Access Driver (*.mdb, *.accdb)\0"
+    //    L"UID=\0"
+    //    L"UserCommitSync=Yes\0"
+    //    L"Threads=3\0"
+    //    L"SafeTransactions=0\0"
+    //    L"PageTimeout=5\0"
+    //    L"MaxScanRows=8\0"
+    //    L"MaxBufferSize=2048\0"
+    //    L"FIL=MS Access\0"
+    //    L"DriverId=25\0"
+    //    L"DefaultDir=E:\\\0"
+    //    L"DBQ=E:\\Database1.mdb\0"
+    //    L"\0", NULL, CatEnvironment::ConfigDSN);
+
+    std::vector<std::wstring> iniKeys;
+    iniKeys.push_back(L"DSN=MeiCloud");
+    iniKeys.push_back(L"DRIVER=Microsoft Access Driver (*.mdb, *.accdb)");
+    iniKeys.push_back(L"UID=");
+    iniKeys.push_back(L"UserCommitSync=Yes");
+    iniKeys.push_back(L"Threads=3");
+    iniKeys.push_back(L"SafeTransactions=0");
+    iniKeys.push_back(L"PageTimeout=5");
+    iniKeys.push_back(L"MaxScanRows=8");
+    iniKeys.push_back(L"FIL=MS Access");
+    iniKeys.push_back(L"DriverId=25");
+    iniKeys.push_back(L"DefaultDir=E:");
+    iniKeys.push_back(L"DBQ=E:\\Database2.accdb");
+    std::wstring attrStr;
+    for (size_t i = 0; i < iniKeys.size(); i++)
+    {
+        attrStr.append(iniKeys[i]);
+        attrStr.append(1, '\0');
+    }
+    attrStr.append(1, '\0');
+    bool b = env->configDSN(attrStr.c_str(), NULL, CatEnvironment::AddDSN);
+
     //b = env->configDSN(
     //    L"DSN=MyDSN\0"
     //    L"\0", L"Microsoft Access Driver (*.mdb, *.accdb)", CatEnvironment::RemoveDSN);
+
     CHECK_E();
 
     auto conn = env->createConnection();
     CATSCOPE(conn);
     CHECK_E();
-    b = conn->connectByDSNName("MyDSN");
+    b = conn->connectByDSNName("MeiCloud");
     CHECK_E();
     b = conn->connected();
     auto stmt = conn->createStatement();
+    CATSCOPE(stmt);
     CHECK_E();
-    auto res = stmt->executeQuery("SELECT * from tab1;");
+    auto res = stmt->executeQuery("SELECT 1;");
+    CATSCOPE(res);
     CHECK_E();
 
     auto md = res->getMetaData();
+    CATSCOPE(md);
     int colCount = md->getColumnCount();
     for (int i = 0; i < colCount; i++)
     {
@@ -99,9 +127,9 @@ int main()
         std::cout << "Age=" << age << std::endl;
     }
     
-    odbcat::Ins().CatFreeT(&md);
-    odbcat::Ins().CatFreeT(&res);
-    odbcat::Ins().CatFreeT(&stmt);
+    //odbcat::Ins().CatFreeT(&md);
+    //odbcat::Ins().CatFreeT(&res);
+    //odbcat::Ins().CatFreeT(&stmt);
     //odbcat::Ins().CatFreeT(&conn);
     //odbcat::Ins().CatFreeT(&env);
 
