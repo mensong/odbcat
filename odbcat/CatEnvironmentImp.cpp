@@ -14,7 +14,7 @@ extern std::string g_errorMsg;
 
 CatEnvironmentImp::CatEnvironmentImp()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw = Environment::create();
@@ -28,7 +28,7 @@ CatEnvironmentImp::CatEnvironmentImp()
 
 CatConnection* CatEnvironmentImp::createConnection()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         ConnectionRef conn = m_raw->createConnection();
@@ -45,7 +45,7 @@ CatConnection* CatEnvironmentImp::createConnection()
 bool CatEnvironmentImp::configDSN(const wchar_t* attributesString, 
     const wchar_t* driver/* = NULL*/, ConfigDsnAction action/* = AddDSN*/)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
 
     std::wstring sDriver;
     if (driver)
@@ -133,7 +133,7 @@ bool CatEnvironmentImp::configDSNByFile(const wchar_t* dsnFile, const wchar_t* D
 
 bool CatEnvironmentImp::isDriverInstalled(const char* driver)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->isDriverInstalled(driver);

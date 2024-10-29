@@ -12,7 +12,7 @@ CatStatementImp::CatStatementImp(StatementRef ref)
 
 unsigned long CatStatementImp::getMaxRows()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getMaxRows();
@@ -27,7 +27,7 @@ unsigned long CatStatementImp::getMaxRows()
 
 void CatStatementImp::setMaxRows(unsigned long maxRows)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setMaxRows(maxRows);
@@ -41,7 +41,7 @@ void CatStatementImp::setMaxRows(unsigned long maxRows)
 
 unsigned long CatStatementImp::getQueryTimeout()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getQueryTimeout();
@@ -56,7 +56,7 @@ unsigned long CatStatementImp::getQueryTimeout()
 
 void CatStatementImp::setQueryTimeout(unsigned long seconds)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setQueryTimeout(seconds);
@@ -70,7 +70,7 @@ void CatStatementImp::setQueryTimeout(unsigned long seconds)
 
 bool CatStatementImp::execute(const char* sql)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->execute(sql);
@@ -86,7 +86,7 @@ bool CatStatementImp::execute(const char* sql)
 
 bool CatStatementImp::execute(const char16_t* sql)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->execute(sql);
@@ -102,7 +102,7 @@ bool CatStatementImp::execute(const char16_t* sql)
 
 CatResultSet* CatStatementImp::executeQuery(const char* sql)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatResultSetImp(m_raw->executeQuery(sql));
@@ -117,7 +117,7 @@ CatResultSet* CatStatementImp::executeQuery(const char* sql)
 
 CatResultSet* CatStatementImp::executeQuery(const char16_t* sql)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatResultSetImp(m_raw->executeQuery(sql));

@@ -11,7 +11,7 @@ CatParameterMetaDataImp::CatParameterMetaDataImp(ParameterMetaDataRef ref)
 
 unsigned short CatParameterMetaDataImp::getParameterCount()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getParameterCount();
@@ -26,7 +26,7 @@ unsigned short CatParameterMetaDataImp::getParameterCount()
 
 short CatParameterMetaDataImp::getParameterType(unsigned short paramIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getParameterType(paramIndex + 1);
@@ -41,7 +41,7 @@ short CatParameterMetaDataImp::getParameterType(unsigned short paramIndex)
 
 size_t CatParameterMetaDataImp::getParameterSize(unsigned short paramIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getParameterSize(paramIndex + 1);
@@ -56,7 +56,7 @@ size_t CatParameterMetaDataImp::getParameterSize(unsigned short paramIndex)
 
 unsigned short CatParameterMetaDataImp::getPrecision(unsigned short paramIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getPrecision(paramIndex + 1);
@@ -71,7 +71,7 @@ unsigned short CatParameterMetaDataImp::getPrecision(unsigned short paramIndex)
 
 unsigned short CatParameterMetaDataImp::getScale(unsigned short paramIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getScale(paramIndex + 1);
@@ -86,7 +86,7 @@ unsigned short CatParameterMetaDataImp::getScale(unsigned short paramIndex)
 
 bool CatParameterMetaDataImp::isNullable(unsigned short paramIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->isNullable(paramIndex + 1);

@@ -11,7 +11,7 @@ CatResultSetMetaDataUnicodeImp::CatResultSetMetaDataUnicodeImp(ResultSetMetaData
 
 unsigned short CatResultSetMetaDataUnicodeImp::getColumnCount()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getColumnCount();
@@ -26,7 +26,7 @@ unsigned short CatResultSetMetaDataUnicodeImp::getColumnCount()
 
 short CatResultSetMetaDataUnicodeImp::getColumnType(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getColumnType(columnIndex + 1);
@@ -41,7 +41,7 @@ short CatResultSetMetaDataUnicodeImp::getColumnType(unsigned short columnIndex)
 
 size_t CatResultSetMetaDataUnicodeImp::getColumnLength(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getColumnLength(columnIndex + 1);
@@ -56,7 +56,7 @@ size_t CatResultSetMetaDataUnicodeImp::getColumnLength(unsigned short columnInde
 
 size_t CatResultSetMetaDataUnicodeImp::getColumnOctetLength(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getColumnOctetLength(columnIndex + 1);
@@ -71,7 +71,7 @@ size_t CatResultSetMetaDataUnicodeImp::getColumnOctetLength(unsigned short colum
 
 size_t CatResultSetMetaDataUnicodeImp::getColumnDisplaySize(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getColumnDisplaySize(columnIndex + 1);
@@ -86,7 +86,7 @@ size_t CatResultSetMetaDataUnicodeImp::getColumnDisplaySize(unsigned short colum
 
 unsigned short CatResultSetMetaDataUnicodeImp::getPrecision(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getPrecision(columnIndex + 1);
@@ -101,7 +101,7 @@ unsigned short CatResultSetMetaDataUnicodeImp::getPrecision(unsigned short colum
 
 unsigned short CatResultSetMetaDataUnicodeImp::getScale(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getScale(columnIndex + 1);
@@ -116,7 +116,7 @@ unsigned short CatResultSetMetaDataUnicodeImp::getScale(unsigned short columnInd
 
 bool CatResultSetMetaDataUnicodeImp::isAutoIncrement(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->isAutoIncrement(columnIndex + 1);
@@ -131,7 +131,7 @@ bool CatResultSetMetaDataUnicodeImp::isAutoIncrement(unsigned short columnIndex)
 
 bool CatResultSetMetaDataUnicodeImp::isCaseSensitive(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->isCaseSensitive(columnIndex + 1);
@@ -146,7 +146,7 @@ bool CatResultSetMetaDataUnicodeImp::isCaseSensitive(unsigned short columnIndex)
 
 bool CatResultSetMetaDataUnicodeImp::isNamed(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->isNamed(columnIndex + 1);
@@ -161,7 +161,7 @@ bool CatResultSetMetaDataUnicodeImp::isNamed(unsigned short columnIndex)
 
 bool CatResultSetMetaDataUnicodeImp::isNullable(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->isNullable(columnIndex + 1);
@@ -176,7 +176,7 @@ bool CatResultSetMetaDataUnicodeImp::isNullable(unsigned short columnIndex)
 
 bool CatResultSetMetaDataUnicodeImp::isReadOnly(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->isReadOnly(columnIndex + 1);
@@ -191,7 +191,7 @@ bool CatResultSetMetaDataUnicodeImp::isReadOnly(unsigned short columnIndex)
 
 bool CatResultSetMetaDataUnicodeImp::isSearchable(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->isSearchable(columnIndex + 1);
@@ -206,7 +206,7 @@ bool CatResultSetMetaDataUnicodeImp::isSearchable(unsigned short columnIndex)
 
 bool CatResultSetMetaDataUnicodeImp::isSigned(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->isSigned(columnIndex + 1);
@@ -221,7 +221,7 @@ bool CatResultSetMetaDataUnicodeImp::isSigned(unsigned short columnIndex)
 
 const char16_t* CatResultSetMetaDataUnicodeImp::getCatalogName(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getCatalogName(columnIndex + 1);
@@ -237,7 +237,7 @@ const char16_t* CatResultSetMetaDataUnicodeImp::getCatalogName(unsigned short co
 
 const char16_t* CatResultSetMetaDataUnicodeImp::getSchemaName(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getSchemaName(columnIndex + 1);
@@ -253,7 +253,7 @@ const char16_t* CatResultSetMetaDataUnicodeImp::getSchemaName(unsigned short col
 
 const char16_t* CatResultSetMetaDataUnicodeImp::getTableName(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getTableName(columnIndex + 1);
@@ -269,7 +269,7 @@ const char16_t* CatResultSetMetaDataUnicodeImp::getTableName(unsigned short colu
 
 const char16_t* CatResultSetMetaDataUnicodeImp::getBaseTableName(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getBaseTableName(columnIndex + 1);
@@ -285,7 +285,7 @@ const char16_t* CatResultSetMetaDataUnicodeImp::getBaseTableName(unsigned short 
 
 const char16_t* CatResultSetMetaDataUnicodeImp::getBaseColumnName(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getBaseColumnName(columnIndex + 1);
@@ -301,7 +301,7 @@ const char16_t* CatResultSetMetaDataUnicodeImp::getBaseColumnName(unsigned short
 
 const char16_t* CatResultSetMetaDataUnicodeImp::getColumnLabel(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getColumnLabel(columnIndex + 1);
@@ -317,7 +317,7 @@ const char16_t* CatResultSetMetaDataUnicodeImp::getColumnLabel(unsigned short co
 
 const char16_t* CatResultSetMetaDataUnicodeImp::getColumnName(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getColumnName(columnIndex + 1);
@@ -333,7 +333,7 @@ const char16_t* CatResultSetMetaDataUnicodeImp::getColumnName(unsigned short col
 
 const char16_t* CatResultSetMetaDataUnicodeImp::getColumnTypeName(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getColumnTypeName(columnIndex + 1);

@@ -15,7 +15,7 @@ CatPreparedStatementImp::CatPreparedStatementImp(PreparedStatementRef ref)
 
 unsigned long CatPreparedStatementImp::getMaxRows()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getMaxRows();
@@ -30,7 +30,7 @@ unsigned long CatPreparedStatementImp::getMaxRows()
 
 void CatPreparedStatementImp::setMaxRows(unsigned long maxRows)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setMaxRows(maxRows);
@@ -44,7 +44,7 @@ void CatPreparedStatementImp::setMaxRows(unsigned long maxRows)
 
 unsigned long CatPreparedStatementImp::getQueryTimeout()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getQueryTimeout();
@@ -59,7 +59,7 @@ unsigned long CatPreparedStatementImp::getQueryTimeout()
 
 void CatPreparedStatementImp::setQueryTimeout(unsigned long seconds)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setQueryTimeout(seconds);
@@ -73,7 +73,7 @@ void CatPreparedStatementImp::setQueryTimeout(unsigned long seconds)
 
 CatParameterMetaData* CatPreparedStatementImp::getParameterMetaData()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatParameterMetaDataImp(m_raw->getParameterMetaData());
@@ -88,7 +88,7 @@ CatParameterMetaData* CatPreparedStatementImp::getParameterMetaData()
 
 void CatPreparedStatementImp::setBoolean(unsigned short paramIndex, bool value)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setBoolean(paramIndex + 1, value);
@@ -102,7 +102,7 @@ void CatPreparedStatementImp::setBoolean(unsigned short paramIndex, bool value)
 
 void CatPreparedStatementImp::setByte(unsigned short paramIndex, INT8 value)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setByte(paramIndex + 1, value);
@@ -116,7 +116,7 @@ void CatPreparedStatementImp::setByte(unsigned short paramIndex, INT8 value)
 
 void CatPreparedStatementImp::setUByte(unsigned short paramIndex, UINT8 value)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setUByte(paramIndex + 1, value);
@@ -130,7 +130,7 @@ void CatPreparedStatementImp::setUByte(unsigned short paramIndex, UINT8 value)
 
 void CatPreparedStatementImp::setShort(unsigned short paramIndex, INT16 value)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setShort(paramIndex + 1, value);
@@ -144,7 +144,7 @@ void CatPreparedStatementImp::setShort(unsigned short paramIndex, INT16 value)
 
 void CatPreparedStatementImp::setUShort(unsigned short paramIndex, UINT16 value)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setUShort(paramIndex + 1, value);
@@ -158,7 +158,7 @@ void CatPreparedStatementImp::setUShort(unsigned short paramIndex, UINT16 value)
 
 void CatPreparedStatementImp::setInt(unsigned short paramIndex, int value)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setInt(paramIndex + 1, value);
@@ -172,7 +172,7 @@ void CatPreparedStatementImp::setInt(unsigned short paramIndex, int value)
 
 void CatPreparedStatementImp::setUInt(unsigned short paramIndex, UINT value)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setUInt(paramIndex + 1, value);
@@ -186,7 +186,7 @@ void CatPreparedStatementImp::setUInt(unsigned short paramIndex, UINT value)
 
 void CatPreparedStatementImp::setLong(unsigned short paramIndex, long long value)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setLong(paramIndex + 1, value);
@@ -200,7 +200,7 @@ void CatPreparedStatementImp::setLong(unsigned short paramIndex, long long value
 
 void CatPreparedStatementImp::setULong(unsigned short paramIndex, unsigned long long value)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setULong(paramIndex + 1, value);
@@ -214,7 +214,7 @@ void CatPreparedStatementImp::setULong(unsigned short paramIndex, unsigned long 
 
 void CatPreparedStatementImp::setFloat(unsigned short paramIndex, float value)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setFloat(paramIndex + 1, value);
@@ -228,7 +228,7 @@ void CatPreparedStatementImp::setFloat(unsigned short paramIndex, float value)
 
 void CatPreparedStatementImp::setDouble(unsigned short paramIndex, double value)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setDouble(paramIndex + 1, value);
@@ -242,7 +242,7 @@ void CatPreparedStatementImp::setDouble(unsigned short paramIndex, double value)
 
 void CatPreparedStatementImp::setCString(unsigned short paramIndex, const char* s)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setCString(paramIndex + 1, s);
@@ -256,7 +256,7 @@ void CatPreparedStatementImp::setCString(unsigned short paramIndex, const char* 
 
 void CatPreparedStatementImp::setCString(unsigned short paramIndex, const char* s, size_t len)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setCString(paramIndex + 1, s, len);
@@ -270,7 +270,7 @@ void CatPreparedStatementImp::setCString(unsigned short paramIndex, const char* 
 
 void CatPreparedStatementImp::setNCString(unsigned short paramIndex, const char16_t* s)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setNCString(paramIndex + 1, s);
@@ -284,7 +284,7 @@ void CatPreparedStatementImp::setNCString(unsigned short paramIndex, const char1
 
 void CatPreparedStatementImp::setNCString(unsigned short paramIndex, const char16_t* s, size_t len)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setNCString(paramIndex + 1, s, len);
@@ -298,7 +298,7 @@ void CatPreparedStatementImp::setNCString(unsigned short paramIndex, const char1
 
 void CatPreparedStatementImp::setBytes(unsigned short paramIndex, const void* data, size_t size)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setBytes(paramIndex + 1, data, size);
@@ -312,7 +312,7 @@ void CatPreparedStatementImp::setBytes(unsigned short paramIndex, const void* da
 
 void CatPreparedStatementImp::setDate(unsigned short paramIndex, int year, int month, int day)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setDate(paramIndex + 1, odbc::date(year, month, day));
@@ -326,7 +326,7 @@ void CatPreparedStatementImp::setDate(unsigned short paramIndex, int year, int m
 
 void CatPreparedStatementImp::setTime(unsigned short paramIndex, int hour, int minute, int second)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setTime(paramIndex + 1, odbc::time(hour, minute, second));
@@ -342,7 +342,7 @@ void CatPreparedStatementImp::setTimestamp(unsigned short paramIndex,
     int year, int month, int day,
     int hour, int minute, int second, int milliseconds)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setTimestamp(paramIndex + 1, odbc::timestamp(
@@ -357,7 +357,7 @@ void CatPreparedStatementImp::setTimestamp(unsigned short paramIndex,
 
 void CatPreparedStatementImp::clearParameters()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->clearParameters();
@@ -371,7 +371,7 @@ void CatPreparedStatementImp::clearParameters()
 
 CatResultSetMetaData* CatPreparedStatementImp::getMetaData()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatResultSetMetaDataImp(m_raw->getMetaData());
@@ -386,7 +386,7 @@ CatResultSetMetaData* CatPreparedStatementImp::getMetaData()
 
 CatResultSetMetaDataUnicode* CatPreparedStatementImp::getMetaDataUnicode()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatResultSetMetaDataUnicodeImp(m_raw->getMetaDataUnicode());
@@ -401,7 +401,7 @@ CatResultSetMetaDataUnicode* CatPreparedStatementImp::getMetaDataUnicode()
 
 CatResultSet* CatPreparedStatementImp::executeQuery()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatResultSetImp(m_raw->executeQuery());
@@ -416,7 +416,7 @@ CatResultSet* CatPreparedStatementImp::executeQuery()
 
 size_t CatPreparedStatementImp::executeUpdate()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->executeUpdate();
@@ -431,7 +431,7 @@ size_t CatPreparedStatementImp::executeUpdate()
 
 bool CatPreparedStatementImp::addBatch()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->addBatch();
@@ -447,7 +447,7 @@ bool CatPreparedStatementImp::addBatch()
 
 bool CatPreparedStatementImp::executeBatch()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->executeBatch();
@@ -463,7 +463,7 @@ bool CatPreparedStatementImp::executeBatch()
 
 void CatPreparedStatementImp::clearBatch()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->clearBatch();
@@ -477,7 +477,7 @@ void CatPreparedStatementImp::clearBatch()
 
 size_t CatPreparedStatementImp::getBatchDataSize()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getBatchDataSize();

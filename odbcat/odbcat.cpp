@@ -28,8 +28,3 @@ ODBCAT_API const char* GetError()
 {
     return g_errorMsg.c_str();
 }
-
-ODBCAT_API void ClearError()
-{
-    g_errorMsg.clear();
-}

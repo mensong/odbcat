@@ -12,7 +12,7 @@ CatDatabaseMetaDataImp::CatDatabaseMetaDataImp(DatabaseMetaDataRef ref)
 
 unsigned short CatDatabaseMetaDataImp::getMaxConnections()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getMaxConnections();
@@ -27,7 +27,7 @@ unsigned short CatDatabaseMetaDataImp::getMaxConnections()
 
 unsigned long CatDatabaseMetaDataImp::getMaxStatementLength()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getMaxStatementLength();
@@ -42,7 +42,7 @@ unsigned long CatDatabaseMetaDataImp::getMaxStatementLength()
 
 bool CatDatabaseMetaDataImp::isReadOnly()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->isReadOnly();
@@ -57,7 +57,7 @@ bool CatDatabaseMetaDataImp::isReadOnly()
 
 bool CatDatabaseMetaDataImp::supportsAlterTableWithAddColumn()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->supportsAlterTableWithAddColumn();
@@ -72,7 +72,7 @@ bool CatDatabaseMetaDataImp::supportsAlterTableWithAddColumn()
 
 bool CatDatabaseMetaDataImp::supportsAlterTableWithDropColumn()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->supportsAlterTableWithDropColumn();
@@ -87,7 +87,7 @@ bool CatDatabaseMetaDataImp::supportsAlterTableWithDropColumn()
 
 CatTransactionIsolationLevel CatDatabaseMetaDataImp::getDefaultTransactionIsolation()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return (CatTransactionIsolationLevel)m_raw->getDefaultTransactionIsolation();
@@ -102,7 +102,7 @@ CatTransactionIsolationLevel CatDatabaseMetaDataImp::getDefaultTransactionIsolat
 
 bool CatDatabaseMetaDataImp::supportsTransactionIsolation(CatTransactionIsolationLevel level)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->supportsTransactionIsolation((TransactionIsolationLevel)level);
@@ -117,7 +117,7 @@ bool CatDatabaseMetaDataImp::supportsTransactionIsolation(CatTransactionIsolatio
 
 CatResultSet* CatDatabaseMetaDataImp::getColumns(const char* catalogName, const char* schemaName, const char* tableName, const char* columnName)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatResultSetImp(m_raw->getColumns(catalogName, schemaName, tableName, columnName));
@@ -132,7 +132,7 @@ CatResultSet* CatDatabaseMetaDataImp::getColumns(const char* catalogName, const 
 
 CatResultSet* CatDatabaseMetaDataImp::getColumnPrivileges(const char* catalogName, const char* schemaName, const char* tableName, const char* columnName)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatResultSetImp(m_raw->getColumnPrivileges(catalogName, schemaName, tableName, columnName));
@@ -147,7 +147,7 @@ CatResultSet* CatDatabaseMetaDataImp::getColumnPrivileges(const char* catalogNam
 
 CatResultSet* CatDatabaseMetaDataImp::getPrimaryKeys(const char* catalogName, const char* schemaName, const char* tableName)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatResultSetImp(m_raw->getPrimaryKeys(catalogName, schemaName, tableName));
@@ -162,7 +162,7 @@ CatResultSet* CatDatabaseMetaDataImp::getPrimaryKeys(const char* catalogName, co
 
 CatResultSet* CatDatabaseMetaDataImp::getSpecialColumns(CatRowIdentifierType identifierType, const char* catalogName, const char* schemaName, const char* tableName, CatRowIdentifierScope scope, CatColumnNullableValue nullable)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatResultSetImp(m_raw->getSpecialColumns((RowIdentifierType)identifierType, catalogName, schemaName, tableName, (RowIdentifierScope)scope, (ColumnNullableValue)nullable));
@@ -177,7 +177,7 @@ CatResultSet* CatDatabaseMetaDataImp::getSpecialColumns(CatRowIdentifierType ide
 
 CatResultSet* CatDatabaseMetaDataImp::getStatistics(const char* catalogName, const char* schemaName, const char* tableName, CatIndexType indexType, CatStatisticsAccuracy accuracy)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatResultSetImp(m_raw->getStatistics(catalogName, schemaName, tableName, (IndexType)indexType, (StatisticsAccuracy)accuracy));
@@ -192,7 +192,7 @@ CatResultSet* CatDatabaseMetaDataImp::getStatistics(const char* catalogName, con
 
 CatResultSet* CatDatabaseMetaDataImp::getTables(const char* catalogName, const char* schemaName, const char* tableName, const char* tableType)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatResultSetImp(m_raw->getTables(catalogName, schemaName, tableName, tableType));
@@ -207,7 +207,7 @@ CatResultSet* CatDatabaseMetaDataImp::getTables(const char* catalogName, const c
 
 CatResultSet* CatDatabaseMetaDataImp::getTypeInfo()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatResultSetImp(m_raw->getTypeInfo());
@@ -222,7 +222,7 @@ CatResultSet* CatDatabaseMetaDataImp::getTypeInfo()
 
 CatResultSet* CatDatabaseMetaDataImp::getTypeInfo(int type)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatResultSetImp(m_raw->getTypeInfo(type));
@@ -237,7 +237,7 @@ CatResultSet* CatDatabaseMetaDataImp::getTypeInfo(int type)
 
 const char* CatDatabaseMetaDataImp::getDataSourceName()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getDataSourceName();
@@ -253,7 +253,7 @@ const char* CatDatabaseMetaDataImp::getDataSourceName()
 
 const char* CatDatabaseMetaDataImp::getDatabaseName()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getDatabaseName();
@@ -269,7 +269,7 @@ const char* CatDatabaseMetaDataImp::getDatabaseName()
 
 const char* CatDatabaseMetaDataImp::getDBMSName()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getDBMSName();
@@ -285,7 +285,7 @@ const char* CatDatabaseMetaDataImp::getDBMSName()
 
 const char* CatDatabaseMetaDataImp::getDBMSVersion()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getDBMSVersion();
@@ -301,7 +301,7 @@ const char* CatDatabaseMetaDataImp::getDBMSVersion()
 
 const char* CatDatabaseMetaDataImp::getDriverName()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getDriverName();
@@ -317,7 +317,7 @@ const char* CatDatabaseMetaDataImp::getDriverName()
 
 const char* CatDatabaseMetaDataImp::getDriverVersion()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getDriverVersion();
@@ -333,7 +333,7 @@ const char* CatDatabaseMetaDataImp::getDriverVersion()
 
 const char* CatDatabaseMetaDataImp::getServerName()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getServerName();
@@ -349,7 +349,7 @@ const char* CatDatabaseMetaDataImp::getServerName()
 
 const char* CatDatabaseMetaDataImp::getUserName()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getUserName();

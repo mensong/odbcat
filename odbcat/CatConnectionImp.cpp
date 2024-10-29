@@ -20,7 +20,7 @@ CatConnectionImp::~CatConnectionImp()
 
 bool CatConnectionImp::connectByDSNName(const char* dsn, const char* user/* = NULL*/, const char* password/* = NULL*/)
 {
-    g_hasError = false;
+	g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->connect(dsn, user, password);
@@ -36,7 +36,7 @@ bool CatConnectionImp::connectByDSNName(const char* dsn, const char* user/* = NU
 
 bool CatConnectionImp::connect(const char* connString)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->connect(connString);
@@ -52,7 +52,7 @@ bool CatConnectionImp::connect(const char* connString)
 
 void CatConnectionImp::disconnect()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->disconnect();
@@ -71,7 +71,7 @@ bool CatConnectionImp::connected()
 
 bool CatConnectionImp::isValid()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->isValid();
@@ -86,7 +86,7 @@ bool CatConnectionImp::isValid()
 
 unsigned long CatConnectionImp::getConnectionTimeout()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getConnectionTimeout();
@@ -101,7 +101,7 @@ unsigned long CatConnectionImp::getConnectionTimeout()
 
 void CatConnectionImp::setConnectionTimeout(unsigned long seconds)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setConnectionTimeout(seconds);
@@ -115,7 +115,7 @@ void CatConnectionImp::setConnectionTimeout(unsigned long seconds)
 
 unsigned long CatConnectionImp::getLoginTimeout()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getLoginTimeout();
@@ -130,7 +130,7 @@ unsigned long CatConnectionImp::getLoginTimeout()
 
 void CatConnectionImp::setLoginTimeout(unsigned long seconds)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setLoginTimeout(seconds);
@@ -144,7 +144,7 @@ void CatConnectionImp::setLoginTimeout(unsigned long seconds)
 
 void CatConnectionImp::setAttribute(int attr, int value)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setAttribute(attr, value);
@@ -158,7 +158,7 @@ void CatConnectionImp::setAttribute(int attr, int value)
 
 void CatConnectionImp::setAttribute(int attr, unsigned int value)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setAttribute(attr, value);
@@ -172,7 +172,7 @@ void CatConnectionImp::setAttribute(int attr, unsigned int value)
 
 void CatConnectionImp::setAttribute(int attr, const char* value)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setAttribute(attr, value);
@@ -186,7 +186,7 @@ void CatConnectionImp::setAttribute(int attr, const char* value)
 
 void CatConnectionImp::setAttribute(int attr, const char* value, size_t length)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setAttribute(attr, value, length);
@@ -200,7 +200,7 @@ void CatConnectionImp::setAttribute(int attr, const char* value, size_t length)
 
 void CatConnectionImp::setAttribute(int attr, const void* value, size_t size)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setAttribute(attr, value, size);
@@ -214,7 +214,7 @@ void CatConnectionImp::setAttribute(int attr, const void* value, size_t size)
 
 bool CatConnectionImp::getAutoCommit()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getAutoCommit();
@@ -229,7 +229,7 @@ bool CatConnectionImp::getAutoCommit()
 
 void CatConnectionImp::setAutoCommit(bool autoCommit)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setAutoCommit(autoCommit);
@@ -243,7 +243,7 @@ void CatConnectionImp::setAutoCommit(bool autoCommit)
 
 void CatConnectionImp::commit()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->commit();
@@ -257,7 +257,7 @@ void CatConnectionImp::commit()
 
 void CatConnectionImp::rollback()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->rollback();
@@ -271,7 +271,7 @@ void CatConnectionImp::rollback()
 
 bool CatConnectionImp::isReadOnly()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->isReadOnly();
@@ -286,7 +286,7 @@ bool CatConnectionImp::isReadOnly()
 
 void CatConnectionImp::setReadOnly(bool readOnly)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setReadOnly(readOnly);
@@ -300,7 +300,7 @@ void CatConnectionImp::setReadOnly(bool readOnly)
 
 CatTransactionIsolationLevel CatConnectionImp::getTransactionIsolation()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return (CatTransactionIsolationLevel)m_raw->getTransactionIsolation();
@@ -315,7 +315,7 @@ CatTransactionIsolationLevel CatConnectionImp::getTransactionIsolation()
 
 void CatConnectionImp::setTransactionIsolation(CatTransactionIsolationLevel level)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->setTransactionIsolation((TransactionIsolationLevel)level);
@@ -329,7 +329,7 @@ void CatConnectionImp::setTransactionIsolation(CatTransactionIsolationLevel leve
 
 CatStatement* CatConnectionImp::createStatement()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatStatementImp(m_raw->createStatement());
@@ -344,7 +344,7 @@ CatStatement* CatConnectionImp::createStatement()
 
 CatPreparedStatement* CatConnectionImp::prepareStatement(const char* sql)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatPreparedStatementImp(m_raw->prepareStatement(sql));
@@ -359,7 +359,7 @@ CatPreparedStatement* CatConnectionImp::prepareStatement(const char* sql)
 
 CatPreparedStatement* CatConnectionImp::prepareStatement(const char16_t* sql)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatPreparedStatementImp(m_raw->prepareStatement(sql));
@@ -374,7 +374,7 @@ CatPreparedStatement* CatConnectionImp::prepareStatement(const char16_t* sql)
 
 CatDatabaseMetaData* CatConnectionImp::getDatabaseMetaData()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatDatabaseMetaDataImp(m_raw->getDatabaseMetaData());
@@ -389,7 +389,7 @@ CatDatabaseMetaData* CatConnectionImp::getDatabaseMetaData()
 
 CatDatabaseMetaDataUnicode* CatConnectionImp::getDatabaseMetaDataUnicode()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatDatabaseMetaDataUnicodeImp(m_raw->getDatabaseMetaDataUnicode());

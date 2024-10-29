@@ -2374,7 +2374,6 @@ ODBCAT_API void CatFree(CatBase** pp);
 
 ODBCAT_API bool HasError();
 ODBCAT_API const char* GetError();
-ODBCAT_API void ClearError();
 
 class odbcat
 {
@@ -2389,7 +2388,6 @@ public:
 	DEF_PROC(CatFree);
 	DEF_PROC(HasError);
 	DEF_PROC(GetError);
-	DEF_PROC(ClearError);
 
 	odbcat()
 	{
@@ -2401,7 +2399,6 @@ public:
 		SET_PROC(hDll, CatFree);
 		SET_PROC(hDll, HasError);
 		SET_PROC(hDll, GetError);
-		SET_PROC(hDll, ClearError);
 	}
 
 	template<class T>

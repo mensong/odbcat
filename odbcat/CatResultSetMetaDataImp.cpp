@@ -11,7 +11,7 @@ CatResultSetMetaDataImp::CatResultSetMetaDataImp(ResultSetMetaDataRef ref)
 
 unsigned short CatResultSetMetaDataImp::getColumnCount()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getColumnCount();
@@ -26,7 +26,7 @@ unsigned short CatResultSetMetaDataImp::getColumnCount()
 
 short CatResultSetMetaDataImp::getColumnType(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getColumnType(columnIndex + 1);
@@ -41,7 +41,7 @@ short CatResultSetMetaDataImp::getColumnType(unsigned short columnIndex)
 
 size_t CatResultSetMetaDataImp::getColumnLength(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getColumnLength(columnIndex + 1);
@@ -56,7 +56,7 @@ size_t CatResultSetMetaDataImp::getColumnLength(unsigned short columnIndex)
 
 size_t CatResultSetMetaDataImp::getColumnOctetLength(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getColumnOctetLength(columnIndex + 1);
@@ -71,7 +71,7 @@ size_t CatResultSetMetaDataImp::getColumnOctetLength(unsigned short columnIndex)
 
 size_t CatResultSetMetaDataImp::getColumnDisplaySize(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getColumnDisplaySize(columnIndex + 1);
@@ -86,7 +86,7 @@ size_t CatResultSetMetaDataImp::getColumnDisplaySize(unsigned short columnIndex)
 
 unsigned short CatResultSetMetaDataImp::getPrecision(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getPrecision(columnIndex + 1);
@@ -101,7 +101,7 @@ unsigned short CatResultSetMetaDataImp::getPrecision(unsigned short columnIndex)
 
 unsigned short CatResultSetMetaDataImp::getScale(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getScale(columnIndex + 1);
@@ -116,7 +116,7 @@ unsigned short CatResultSetMetaDataImp::getScale(unsigned short columnIndex)
 
 bool CatResultSetMetaDataImp::isAutoIncrement(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->isAutoIncrement(columnIndex + 1);
@@ -131,7 +131,7 @@ bool CatResultSetMetaDataImp::isAutoIncrement(unsigned short columnIndex)
 
 bool CatResultSetMetaDataImp::isCaseSensitive(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->isCaseSensitive(columnIndex + 1);
@@ -146,7 +146,7 @@ bool CatResultSetMetaDataImp::isCaseSensitive(unsigned short columnIndex)
 
 bool CatResultSetMetaDataImp::isNamed(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->isNamed(columnIndex + 1);
@@ -161,7 +161,7 @@ bool CatResultSetMetaDataImp::isNamed(unsigned short columnIndex)
 
 bool CatResultSetMetaDataImp::isNullable(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->isNullable(columnIndex + 1);
@@ -176,7 +176,7 @@ bool CatResultSetMetaDataImp::isNullable(unsigned short columnIndex)
 
 bool CatResultSetMetaDataImp::isReadOnly(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->isReadOnly(columnIndex + 1);
@@ -191,7 +191,7 @@ bool CatResultSetMetaDataImp::isReadOnly(unsigned short columnIndex)
 
 bool CatResultSetMetaDataImp::isSearchable(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->isSearchable(columnIndex + 1);
@@ -206,7 +206,7 @@ bool CatResultSetMetaDataImp::isSearchable(unsigned short columnIndex)
 
 bool CatResultSetMetaDataImp::isSigned(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->isSigned(columnIndex + 1);
@@ -221,7 +221,7 @@ bool CatResultSetMetaDataImp::isSigned(unsigned short columnIndex)
 
 const char* CatResultSetMetaDataImp::getCatalogName(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getCatalogName(columnIndex + 1);
@@ -237,7 +237,7 @@ const char* CatResultSetMetaDataImp::getCatalogName(unsigned short columnIndex)
 
 const char* CatResultSetMetaDataImp::getSchemaName(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getSchemaName(columnIndex + 1);
@@ -253,7 +253,7 @@ const char* CatResultSetMetaDataImp::getSchemaName(unsigned short columnIndex)
 
 const char* CatResultSetMetaDataImp::getTableName(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getTableName(columnIndex + 1);
@@ -269,7 +269,7 @@ const char* CatResultSetMetaDataImp::getTableName(unsigned short columnIndex)
 
 const char* CatResultSetMetaDataImp::getBaseTableName(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getBaseTableName(columnIndex + 1);
@@ -285,7 +285,7 @@ const char* CatResultSetMetaDataImp::getBaseTableName(unsigned short columnIndex
 
 const char* CatResultSetMetaDataImp::getBaseColumnName(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getBaseColumnName(columnIndex + 1);
@@ -301,7 +301,7 @@ const char* CatResultSetMetaDataImp::getBaseColumnName(unsigned short columnInde
 
 const char* CatResultSetMetaDataImp::getColumnLabel(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getColumnLabel(columnIndex + 1);
@@ -317,7 +317,7 @@ const char* CatResultSetMetaDataImp::getColumnLabel(unsigned short columnIndex)
 
 const char* CatResultSetMetaDataImp::getColumnName(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getColumnName(columnIndex + 1);
@@ -333,7 +333,7 @@ const char* CatResultSetMetaDataImp::getColumnName(unsigned short columnIndex)
 
 const char* CatResultSetMetaDataImp::getColumnTypeName(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_buffer = m_raw->getColumnTypeName(columnIndex + 1);

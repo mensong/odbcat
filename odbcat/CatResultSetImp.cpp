@@ -13,7 +13,7 @@ CatResultSetImp::CatResultSetImp(ResultSetRef ref)
 
 bool CatResultSetImp::next()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->next();
@@ -28,7 +28,7 @@ bool CatResultSetImp::next()
 
 void CatResultSetImp::close()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->close();
@@ -42,7 +42,7 @@ void CatResultSetImp::close()
 
 CatResultSetMetaData* CatResultSetImp::getMetaData()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatResultSetMetaDataImp(m_raw->getMetaData());
@@ -57,7 +57,7 @@ CatResultSetMetaData* CatResultSetImp::getMetaData()
 
 CatResultSetMetaDataUnicode* CatResultSetImp::getMetaDataUnicode()
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return new CatResultSetMetaDataUnicodeImp(m_raw->getMetaDataUnicode());
@@ -72,7 +72,7 @@ CatResultSetMetaDataUnicode* CatResultSetImp::getMetaDataUnicode()
 
 bool CatResultSetImp::getBoolean(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return *(m_raw->getBoolean(columnIndex + 1));
@@ -87,7 +87,7 @@ bool CatResultSetImp::getBoolean(unsigned short columnIndex)
 
 std::int8_t CatResultSetImp::getByte(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return *(m_raw->getByte(columnIndex + 1));
@@ -102,7 +102,7 @@ std::int8_t CatResultSetImp::getByte(unsigned short columnIndex)
 
 std::uint8_t CatResultSetImp::getUByte(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return *(m_raw->getUByte(columnIndex + 1));
@@ -117,7 +117,7 @@ std::uint8_t CatResultSetImp::getUByte(unsigned short columnIndex)
 
 short CatResultSetImp::getShort(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return *(m_raw->getShort(columnIndex + 1));
@@ -132,7 +132,7 @@ short CatResultSetImp::getShort(unsigned short columnIndex)
 
 unsigned short CatResultSetImp::getUShort(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return *(m_raw->getUShort(columnIndex + 1));
@@ -147,7 +147,7 @@ unsigned short CatResultSetImp::getUShort(unsigned short columnIndex)
 
 int CatResultSetImp::getInt(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return *(m_raw->getInt(columnIndex + 1));
@@ -162,7 +162,7 @@ int CatResultSetImp::getInt(unsigned short columnIndex)
 
 unsigned int CatResultSetImp::getUInt(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return *(m_raw->getUInt(columnIndex + 1));
@@ -177,7 +177,7 @@ unsigned int CatResultSetImp::getUInt(unsigned short columnIndex)
 
 long long CatResultSetImp::getLong(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return *(m_raw->getLong(columnIndex + 1));
@@ -192,7 +192,7 @@ long long CatResultSetImp::getLong(unsigned short columnIndex)
 
 unsigned long long CatResultSetImp::getULong(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return *(m_raw->getULong(columnIndex + 1));
@@ -207,7 +207,7 @@ unsigned long long CatResultSetImp::getULong(unsigned short columnIndex)
 
 float CatResultSetImp::getFloat(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return *(m_raw->getFloat(columnIndex + 1));
@@ -222,7 +222,7 @@ float CatResultSetImp::getFloat(unsigned short columnIndex)
 
 double CatResultSetImp::getDouble(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return *(m_raw->getDouble(columnIndex + 1));
@@ -237,7 +237,7 @@ double CatResultSetImp::getDouble(unsigned short columnIndex)
 
 bool CatResultSetImp::getDate(unsigned short columnIndex, int* year, int* month, int* day)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         Date date = m_raw->getDate(columnIndex + 1);
@@ -258,7 +258,7 @@ bool CatResultSetImp::getDate(unsigned short columnIndex, int* year, int* month,
 
 bool CatResultSetImp::getTime(unsigned short columnIndex, int* hour, int* minute, int* second)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         Time time = m_raw->getTime(columnIndex + 1);
@@ -281,7 +281,7 @@ bool CatResultSetImp::getTimestamp(unsigned short columnIndex,
     int* year, int* month, int* day,
     int* hour, int* minute, int* second, int* milliseconds)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         Timestamp ts = m_raw->getTimestamp(columnIndex + 1);
@@ -306,7 +306,7 @@ bool CatResultSetImp::getTimestamp(unsigned short columnIndex,
 
 size_t CatResultSetImp::getBinaryLength(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getBinaryLength(columnIndex + 1);
@@ -321,7 +321,7 @@ size_t CatResultSetImp::getBinaryLength(unsigned short columnIndex)
 
 void CatResultSetImp::getBinaryData(unsigned short columnIndex, void* outData, size_t size)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->getBinaryData(columnIndex + 1, outData, size);
@@ -335,7 +335,7 @@ void CatResultSetImp::getBinaryData(unsigned short columnIndex, void* outData, s
 
 size_t CatResultSetImp::getStringLength(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getStringLength(columnIndex + 1);
@@ -350,7 +350,7 @@ size_t CatResultSetImp::getStringLength(unsigned short columnIndex)
 
 void CatResultSetImp::getStringData(unsigned short columnIndex, void* outData, size_t size)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->getStringData(columnIndex + 1, outData, size);
@@ -364,7 +364,7 @@ void CatResultSetImp::getStringData(unsigned short columnIndex, void* outData, s
 
 size_t CatResultSetImp::getNStringLength(unsigned short columnIndex)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         return m_raw->getNStringLength(columnIndex + 1);
@@ -379,7 +379,7 @@ size_t CatResultSetImp::getNStringLength(unsigned short columnIndex)
 
 void CatResultSetImp::getNStringData(unsigned short columnIndex, void* outData, size_t size)
 {
-    g_hasError = false;
+    g_hasError = false; g_errorMsg.clear();
     try
     {
         m_raw->getNStringData(columnIndex + 1, outData, size);
