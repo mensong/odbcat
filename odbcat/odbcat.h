@@ -2314,6 +2314,7 @@ public:
 			L"DSN=MyDSN\0"
 			L"DRIVER=Microsoft Access Driver (*.mdb, *.accdb)\0"
 			L"UID=\0"
+			L"PWD=\0"
 			L"UserCommitSync=Yes\0"
 			L"Threads=3\0"
 			L"SafeTransactions=0\0"
