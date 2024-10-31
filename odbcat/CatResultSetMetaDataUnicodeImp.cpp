@@ -24,18 +24,18 @@ unsigned short CatResultSetMetaDataUnicodeImp::getColumnCount()
     }
 }
 
-short CatResultSetMetaDataUnicodeImp::getColumnType(unsigned short columnIndex)
+CatColumnType CatResultSetMetaDataUnicodeImp::getColumnType(unsigned short columnIndex)
 {
     g_hasError = false; g_errorMsg.clear();
     try
     {
-        return m_raw->getColumnType(columnIndex + 1);
+        return (CatColumnType)m_raw->getColumnType(columnIndex + 1);
     }
     catch (const std::exception& ex)
     {
         g_hasError = true;
         g_errorMsg = ex.what();
-        return 0;
+        return CatColumnType::CT_UNKNOWN_TYPE;
     }
 }
 

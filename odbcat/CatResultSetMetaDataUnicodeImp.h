@@ -15,7 +15,7 @@ public:
 	// Í¨¹ý CatResultSetMetaDataUnicode ¼Ì³Ð
 	virtual unsigned short getColumnCount() override;
 
-	virtual short getColumnType(unsigned short columnIndex) override;
+	virtual CatColumnType getColumnType(unsigned short columnIndex) override;
 
 	virtual size_t getColumnLength(unsigned short columnIndex) override;
 

@@ -204,6 +204,24 @@ public:
 	virtual CatDriverInformationAttributes* attributes(int idx) = 0;
 };
 
+enum CatColumnType
+{
+	CT_UNKNOWN_TYPE    =0 ,
+	CT_CHAR            =1 ,
+	CT_NUMERIC         =2 ,
+	CT_DECIMAL         =3 ,
+	CT_INTEGER         =4 ,
+	CT_SMALLINT        =5 ,
+	CT_FLOAT           =6 ,
+	CT_REAL            =7 ,
+	CT_DOUBLE          =8 ,
+	CT_DATETIME        =9 ,
+	CT_VARCHAR         =12,
+	CT_TYPE_DATE       =91,
+	CT_TYPE_TIME       =92,
+	CT_TYPE_TIMESTAMP  =93,
+};
+
 class CatResultSetMetaData
 {
 public:
@@ -222,7 +240,7 @@ public:
 	 * @param columnIndex  The column index starting from 1.
 	 * @return             Returns the column's data type.
 	 */
-	virtual short getColumnType(unsigned short columnIndex) = 0;
+	virtual CatColumnType getColumnType(unsigned short columnIndex) = 0;
 
 	/**
 	 * Returns a column's length.
@@ -422,7 +440,7 @@ public:
 	 * @param columnIndex  The column index starting from 1.
 	 * @return             Returns the column's data type.
 	 */
-	virtual short getColumnType(unsigned short columnIndex) = 0;
+	virtual CatColumnType getColumnType(unsigned short columnIndex) = 0;
 
 	/**
 	 * Returns a column's length.
@@ -645,7 +663,7 @@ public:
 	 * @param columnIndex  The column index starting from 1.
 	 * @return             Returns the column value.
 	 */
-	virtual bool getBoolean(unsigned short columnIndex) = 0;
+	virtual bool getBoolean(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
 
 	/**
 	 * Retrieves the value of the specified column in the current row as
@@ -654,7 +672,7 @@ public:
 	 * @param columnIndex  The column index starting from 1.
 	 * @return             Returns the column value.
 	 */
-	virtual std::int8_t getByte(unsigned short columnIndex) = 0;
+	virtual std::int8_t getByte(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
 
 	/**
 	 * Retrieves the value of the specified column in the current row as
@@ -663,7 +681,7 @@ public:
 	 * @param columnIndex  The column index starting from 1.
 	 * @return             Returns the column value.
 	 */
-	virtual std::uint8_t getUByte(unsigned short columnIndex) = 0;
+	virtual std::uint8_t getUByte(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
 
 	/**
 	 * Retrieves the value of the specified column in the current row as
@@ -672,7 +690,7 @@ public:
 	 * @param columnIndex  The column index starting from 1.
 	 * @return             Returns the column value.
 	 */
-	virtual short getShort(unsigned short columnIndex) = 0;
+	virtual short getShort(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
 
 	/**
 	 * Retrieves the value of the specified column in the current row as
@@ -681,7 +699,7 @@ public:
 	 * @param columnIndex  The column index starting from 1.
 	 * @return             Returns the column value.
 	 */
-	virtual unsigned short getUShort(unsigned short columnIndex) = 0;
+	virtual unsigned short getUShort(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
 
 	/**
 	 * Retrieves the value of the specified column in the current row as
@@ -690,7 +708,7 @@ public:
 	 * @param columnIndex  The column index starting from 1.
 	 * @return             Returns the column value.
 	 */
-	virtual int getInt(unsigned short columnIndex) = 0;
+	virtual int getInt(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
 
 	/**
 	 * Retrieves the value of the specified column in the current row as
@@ -699,7 +717,7 @@ public:
 	 * @param columnIndex  The column index starting from 1.
 	 * @return             Returns the column value.
 	 */
-	virtual unsigned int getUInt(unsigned short columnIndex) = 0;
+	virtual unsigned int getUInt(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
 
 	/**
 	 * Retrieves the value of the specified column in the current row as
@@ -708,7 +726,7 @@ public:
 	 * @param columnIndex  The column index starting from 1.
 	 * @return             Returns the column value.
 	 */
-	virtual long long getLong(unsigned short columnIndex) = 0;
+	virtual long long getLong(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
 
 	/**
 	 * Retrieves the value of the specified column in the current row as
@@ -717,7 +735,7 @@ public:
 	 * @param columnIndex  The column index starting from 1.
 	 * @return             Returns the column value.
 	 */
-	virtual unsigned long long getULong(unsigned short columnIndex) = 0;
+	virtual unsigned long long getULong(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
 
 	/**
 	 * Retrieves the value of the specified column in the current row as
@@ -726,7 +744,7 @@ public:
 	 * @param columnIndex  The column index starting from 1.
 	 * @return             Returns the column value.
 	 */
-	virtual float getFloat(unsigned short columnIndex) = 0;
+	virtual float getFloat(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
 
 	/**
 	 * Retrieves the value of the specified column in the current row as
@@ -735,7 +753,7 @@ public:
 	 * @param columnIndex  The column index starting from 1.
 	 * @return             Returns the column value.
 	 */
-	virtual double getDouble(unsigned short columnIndex) = 0;
+	virtual double getDouble(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
 
 	/**
 	 * Retrieves the value of the specified column in the current row as
@@ -744,7 +762,7 @@ public:
 	 * @param columnIndex  The column index starting from 1.
 	 * @return             Returns the column value.
 	 */
-	virtual bool getDate(unsigned short columnIndex, int* year, int* month, int* day) = 0;
+	virtual bool getDate(unsigned short columnIndex, int* year, int* month, int* day, bool* outIsNull = NULL) = 0;
 
 	/**
 	 * Retrieves the value of the specified column in the current row as
@@ -753,7 +771,7 @@ public:
 	 * @param columnIndex  The column index starting from 1.
 	 * @return             Returns the column value.
 	 */
-	virtual bool getTime(unsigned short columnIndex, int* hour, int* minute, int* second) = 0;
+	virtual bool getTime(unsigned short columnIndex, int* hour, int* minute, int* second, bool* outIsNull = NULL) = 0;
 
 	/**
 	 * Retrieves the value of the specified column in the current row as
@@ -764,7 +782,8 @@ public:
 	 */
 	virtual bool getTimestamp(unsigned short columnIndex,
 		int* year, int* month, int* day,
-		int* hour, int* minute, int* second, int* milliseconds) = 0;
+		int* hour, int* minute, int* second, int* milliseconds, 
+		bool* outIsNull = NULL) = 0;
 
 
 	/**
@@ -779,7 +798,7 @@ public:
 	 * @return             Returns the length of binary data, NULL_DATA or
 	 *                     UNKNOWN_LENGTH.
 	 */
-	virtual size_t getBinaryLength(unsigned short columnIndex) = 0;
+	virtual size_t getBinaryLength(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
 
 	/**
 	 * Retrieves the binary data stored in the specified column of the current
@@ -807,7 +826,7 @@ public:
 	 * @return             The length of a string in characters, NULL_DATA or
 	 *                     UNKNOWN_LENGTH.
 	 */
-	virtual size_t getStringLength(unsigned short columnIndex) = 0;
+	virtual size_t getStringLength(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
 
 	/**
 	 * Retrieves the string data stored in the specified column of the current
@@ -835,7 +854,7 @@ public:
 	 * @return             The length of a string in characters, NULL_DATA or
 	 *                     UNKNOWN_LENGTH.
 	 */
-	virtual size_t getNStringLength(unsigned short columnIndex) = 0;
+	virtual size_t getNStringLength(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
 
 	/**
 	 * Retrieves the 16-bit character string data stored in the specified column
