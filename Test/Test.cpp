@@ -42,6 +42,17 @@ int main()
     }
     std::cout << std::endl;
 
+    bool b;
+
+	b = env->configDSN(
+		L"DSN=MyDSN\0\0", 
+#if _WIN64
+        L"Microsoft Access Driver (*.mdb, *.accdb)", 
+#else
+        L"Microsoft Access Driver (*.mdb)",
+#endif
+        CatEnvironment::RemoveDSN);
+
     //bool b = env->configDSN(
     //    L"DSN=MyDSN\0"
     //    L"DRIVER=Microsoft Access Driver (*.mdb, *.accdb)\0"
@@ -60,7 +71,11 @@ int main()
 
     std::vector<std::wstring> iniKeys;
     iniKeys.push_back(L"DSN=MyDSN");
+#if _WIN64
     iniKeys.push_back(L"DRIVER=Microsoft Access Driver (*.mdb, *.accdb)");
+#else    
+    iniKeys.push_back(L"DRIVER=Microsoft Access Driver (*.mdb)");
+#endif
     iniKeys.push_back(L"UID=");
     iniKeys.push_back(L"UserCommitSync=Yes");
     iniKeys.push_back(L"Threads=3");
@@ -69,8 +84,10 @@ int main()
     iniKeys.push_back(L"MaxScanRows=8");
     iniKeys.push_back(L"FIL=MS Access");
     iniKeys.push_back(L"DriverId=25");
-    iniKeys.push_back(L"DefaultDir=E:");
-    iniKeys.push_back(L"DBQ=E:\\Database2.accdb");
+    wchar_t curDir[MAX_PATH] = { 0 };
+    GetCurrentDirectoryW(MAX_PATH, curDir);
+    iniKeys.push_back(L"DefaultDir=" + std::wstring(curDir));
+    iniKeys.push_back(L"DBQ=" + std::wstring(curDir) + L"\\Database1.mdb");
     std::wstring attrStr;
     for (size_t i = 0; i < iniKeys.size(); i++)
     {
@@ -78,18 +95,14 @@ int main()
         attrStr.append(1, '\0');
     }
     attrStr.append(1, '\0');
-    bool b = env->configDSN(attrStr.c_str(), NULL, CatEnvironment::AddDSN);
-
-    //b = env->configDSN(
-    //    L"DSN=MyDSN\0"
-    //    L"\0", L"Microsoft Access Driver (*.mdb, *.accdb)", CatEnvironment::RemoveDSN);
-
+    b = env->configDSN(attrStr.c_str(), NULL, CatEnvironment::AddDSN);
     CHECK_E();
 
     auto conn = env->createConnection();
     CATSCOPE(conn);
     CHECK_E();
     b = conn->connectByDSNName("MyDSN");
+    //b = conn->connect("DRIVER=Microsoft Access Driver (*.mdb, *.accdb);UID=;UserCommitSync=Yes;Threads=3;SafeTransactions=0;PageTimeout=5;MaxScanRows=8;FIL=MS Access;DriverId=25;DefaultDir=E:;DBQ=E:\\Database2.accdb;");
     CHECK_E();
     b = conn->connected();
     auto stmt = conn->createStatement();
