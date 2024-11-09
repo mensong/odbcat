@@ -237,7 +237,7 @@ public:
 	 *
 	 * See SQLDataTypes for a list of data type constants.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's data type.
 	 */
 	virtual CatColumnType getColumnType(unsigned short columnIndex) = 0;
@@ -248,7 +248,7 @@ public:
 	 * This is usually the maximum length of a value measured in characters for
 	 * strings and measured in bytes for binary data.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's length.
 	 */
 	virtual size_t getColumnLength(unsigned short columnIndex) = 0;
@@ -258,7 +258,7 @@ public:
 	 *
 	 * This is usually the maximum length of a value measured in bytes.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's octet length.
 	 */
 	virtual size_t getColumnOctetLength(unsigned short columnIndex) = 0;
@@ -268,7 +268,7 @@ public:
 	 *
 	 * This is the maximum number of characters to display a value.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's display size.
 	 */
 	virtual size_t getColumnDisplaySize(unsigned short columnIndex) = 0;
@@ -276,7 +276,7 @@ public:
 	/**
 	 * Returns a column's precision in case of decimal types.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's precision in case of decimal
 	 *                     types.
 	 */
@@ -285,7 +285,7 @@ public:
 	/**
 	 * Returns a column's scale in case of decimal types.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's scale in case of decimal
 	 *                     types.
 	 */
@@ -294,7 +294,7 @@ public:
 	/**
 	 * Checks whether a column is auto-incrementing.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns true if the column is auto-incrementing,
 	 *                     false otherwise.
 	 */
@@ -303,7 +303,7 @@ public:
 	/**
 	 * Checks whether a column is case sensitive.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns true if the column is case-sensitive, false
 	 *                     otherwise.
 	 */
@@ -315,7 +315,7 @@ public:
 	 * If a column is named, its name can be retrieved with the getColumnName()
 	 * function.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns true if the column is named, false otherwise.
 	 */
 	virtual bool isNamed(unsigned short columnIndex) = 0;
@@ -323,7 +323,7 @@ public:
 	/**
 	 * Checks whether a column can contain NULL values.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns true if the column can contain NULL values,
 	 *                     false otherwise.
 	 */
@@ -332,7 +332,7 @@ public:
 	/**
 	 * Checks whether a column in a result set is read-only.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns true if the column is read-only, false
 	 *                     otherwise.
 	 */
@@ -342,7 +342,7 @@ public:
 	 * Checks whether a column can be used in WHERE-clauses with any comparison
 	 * operator.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns true if the column is searchable, false
 	 *                     otherwise.
 	 */
@@ -351,7 +351,7 @@ public:
 	/**
 	 * Checks whether a column can contain signed numbers.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns true if the column can contain signed
 	 *                     numbers, false otherwise.
 	 */
@@ -360,7 +360,7 @@ public:
 	/**
 	 * Returns a column's catalog name.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's catalog name.
 	 */
 	virtual const char* getCatalogName(unsigned short columnIndex) = 0;
@@ -368,7 +368,7 @@ public:
 	/**
 	 * Returns a column's schema name.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's schema name.
 	 */
 	virtual const char* getSchemaName(unsigned short columnIndex) = 0;
@@ -376,7 +376,7 @@ public:
 	/**
 	 * Returns a column's table name.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's table name.
 	 */
 	virtual const char* getTableName(unsigned short columnIndex) = 0;
@@ -384,7 +384,7 @@ public:
 	/**
 	 * Returns the name of the base table that contains the column.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the base table name.
 	 */
 	virtual const char* getBaseTableName(unsigned short columnIndex) = 0;
@@ -392,7 +392,7 @@ public:
 	/**
 	 * Returns the base column name for the result set column.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the base column name.
 	 */
 	virtual const char* getBaseColumnName(unsigned short columnIndex) = 0;
@@ -400,7 +400,7 @@ public:
 	/**
 	 * Returns a column's label.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's label.
 	 */
 	virtual const char* getColumnLabel(unsigned short columnIndex) = 0;
@@ -408,7 +408,7 @@ public:
 	/**
 	 * Returns a column's name.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's name.
 	 */
 	virtual const char* getColumnName(unsigned short columnIndex) = 0;
@@ -416,7 +416,7 @@ public:
 	/**
 	 * Returns a column's type name.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's type name.
 	 */
 	virtual const char* getColumnTypeName(unsigned short columnIndex) = 0;
@@ -437,7 +437,7 @@ public:
 	 *
 	 * See SQLDataTypes for a list of data type constants.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's data type.
 	 */
 	virtual CatColumnType getColumnType(unsigned short columnIndex) = 0;
@@ -448,7 +448,7 @@ public:
 	 * This is usually the maximum length of a value measured in characters for
 	 * strings and measured in bytes for binary data.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's length.
 	 */
 	virtual size_t getColumnLength(unsigned short columnIndex) = 0;
@@ -458,7 +458,7 @@ public:
 	 *
 	 * This is usually the maximum length of a value measured in bytes.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's octet length.
 	 */
 	virtual size_t getColumnOctetLength(unsigned short columnIndex) = 0;
@@ -468,7 +468,7 @@ public:
 	 *
 	 * This is the maximum number of characters to display a value.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's display size.
 	 */
 	virtual size_t getColumnDisplaySize(unsigned short columnIndex) = 0;
@@ -476,7 +476,7 @@ public:
 	/**
 	 * Returns a column's precision in case of decimal types.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's precision in case of decimal
 	 *                     types.
 	 */
@@ -485,7 +485,7 @@ public:
 	/**
 	 * Returns a column's scale in case of decimal types.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's scale in case of decimal
 	 *                     types.
 	 */
@@ -494,7 +494,7 @@ public:
 	/**
 	 * Checks whether a column is auto-incrementing.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns true if the column is auto-incrementing,
 	 *                     false otherwise.
 	 */
@@ -503,7 +503,7 @@ public:
 	/**
 	 * Checks whether a column is case sensitive.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns true if the column is case-sensitive, false
 	 *                     otherwise.
 	 */
@@ -515,7 +515,7 @@ public:
 	 * If a column is named, its name can be retrieved with the getColumnName()
 	 * function.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns true if the column is named, false otherwise.
 	 */
 	virtual bool isNamed(unsigned short columnIndex) = 0;
@@ -523,7 +523,7 @@ public:
 	/**
 	 * Checks whether a column can contain NULL values.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns true if the column can contain NULL values,
 	 *                     false otherwise.
 	 */
@@ -532,7 +532,7 @@ public:
 	/**
 	 * Checks whether a column in a result set is read-only.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns true if the column is read-only, false
 	 *                     otherwise.
 	 */
@@ -542,7 +542,7 @@ public:
 	 * Checks whether a column can be used in WHERE-clauses with any comparison
 	 * operator.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns true if the column is searchable, false
 	 *                     otherwise.
 	 */
@@ -551,7 +551,7 @@ public:
 	/**
 	 * Checks whether a column can contain signed numbers.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns true if the column can contain signed
 	 *                     numbers, false otherwise.
 	 */
@@ -560,7 +560,7 @@ public:
 	/**
 	 * Returns a column's catalog name.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's catalog name.
 	 */
 	virtual const char16_t* getCatalogName(unsigned short columnIndex) = 0;
@@ -568,7 +568,7 @@ public:
 	/**
 	 * Returns a column's schema name.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's schema name.
 	 */
 	virtual const char16_t* getSchemaName(unsigned short columnIndex) = 0;
@@ -576,7 +576,7 @@ public:
 	/**
 	 * Returns a column's table name.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's table name.
 	 */
 	virtual const char16_t* getTableName(unsigned short columnIndex) = 0;
@@ -584,7 +584,7 @@ public:
 	/**
 	 * Returns the name of the base table that contains the column.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the base table name.
 	 */
 	virtual const char16_t* getBaseTableName(unsigned short columnIndex) = 0;
@@ -592,7 +592,7 @@ public:
 	/**
 	 * Returns the base column name for the result set column.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the base column name.
 	 */
 	virtual const char16_t* getBaseColumnName(unsigned short columnIndex) = 0;
@@ -600,7 +600,7 @@ public:
 	/**
 	 * Returns a column's label.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's label.
 	 */
 	virtual const char16_t* getColumnLabel(unsigned short columnIndex) = 0;
@@ -608,7 +608,7 @@ public:
 	/**
 	 * Returns a column's name.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's name.
 	 */
 	virtual const char16_t* getColumnName(unsigned short columnIndex) = 0;
@@ -616,7 +616,7 @@ public:
 	/**
 	 * Returns a column's type name.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column's type name.
 	 */
 	virtual const char16_t* getColumnTypeName(unsigned short columnIndex) = 0;
@@ -660,7 +660,7 @@ public:
 	 * Retrieves the value of the specified column in the current row as
 	 * a boolean.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column value.
 	 */
 	virtual bool getBoolean(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
@@ -669,7 +669,7 @@ public:
 	 * Retrieves the value of the specified column in the current row as
 	 * a signed byte.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column value.
 	 */
 	virtual std::int8_t getByte(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
@@ -678,7 +678,7 @@ public:
 	 * Retrieves the value of the specified column in the current row as
 	 * an unsigned byte.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column value.
 	 */
 	virtual std::uint8_t getUByte(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
@@ -687,7 +687,7 @@ public:
 	 * Retrieves the value of the specified column in the current row as
 	 * a signed short integer.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column value.
 	 */
 	virtual short getShort(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
@@ -696,7 +696,7 @@ public:
 	 * Retrieves the value of the specified column in the current row as
 	 * an unsigned short integer.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column value.
 	 */
 	virtual unsigned short getUShort(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
@@ -705,7 +705,7 @@ public:
 	 * Retrieves the value of the specified column in the current row as
 	 * a signed integer.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column value.
 	 */
 	virtual int getInt(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
@@ -714,7 +714,7 @@ public:
 	 * Retrieves the value of the specified column in the current row as
 	 * an unsigned integer.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column value.
 	 */
 	virtual unsigned int getUInt(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
@@ -723,7 +723,7 @@ public:
 	 * Retrieves the value of the specified column in the current row as
 	 * a signed long integer.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column value.
 	 */
 	virtual long long getLong(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
@@ -732,7 +732,7 @@ public:
 	 * Retrieves the value of the specified column in the current row as
 	 * an unsigned long integer.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column value.
 	 */
 	virtual unsigned long long getULong(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
@@ -741,7 +741,7 @@ public:
 	 * Retrieves the value of the specified column in the current row as
 	 * a floating point type with single precision.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column value.
 	 */
 	virtual float getFloat(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
@@ -750,7 +750,7 @@ public:
 	 * Retrieves the value of the specified column in the current row as
 	 * a floating point type with double precision.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column value.
 	 */
 	virtual double getDouble(unsigned short columnIndex, bool* outIsNull = NULL) = 0;
@@ -759,7 +759,7 @@ public:
 	 * Retrieves the value of the specified column in the current row as
 	 * a date object.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column value.
 	 */
 	virtual bool getDate(unsigned short columnIndex, int* year, int* month, int* day, bool* outIsNull = NULL) = 0;
@@ -768,7 +768,7 @@ public:
 	 * Retrieves the value of the specified column in the current row as
 	 * a time object.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column value.
 	 */
 	virtual bool getTime(unsigned short columnIndex, int* hour, int* minute, int* second, bool* outIsNull = NULL) = 0;
@@ -777,7 +777,7 @@ public:
 	 * Retrieves the value of the specified column in the current row as
 	 * a timestamp object.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the column value.
 	 */
 	virtual bool getTimestamp(unsigned short columnIndex,
@@ -794,7 +794,7 @@ public:
 	 * database cannot determine the length, the constant UNKNOWN_LENGTH is
 	 * returned.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             Returns the length of binary data, NULL_DATA or
 	 *                     UNKNOWN_LENGTH.
 	 */
@@ -807,7 +807,7 @@ public:
 	 * The total length of the binary data can be found by calling
 	 * the getBinaryLength() function.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @param data         The pointer to a buffer where the read data will be
 	 *                     stored.
 	 * @param size  The maximum number of bytes to be read.
@@ -822,7 +822,7 @@ public:
 	 * database cannot determine the length, the constant UNKNOWN_LENGTH is
 	 * returned.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             The length of a string in characters, NULL_DATA or
 	 *                     UNKNOWN_LENGTH.
 	 */
@@ -835,7 +835,7 @@ public:
 	 * The total length of the string can be found by calling the
 	 * getStringLength() function.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @param[out] data  The pointer to a buffer where the read data will be
 	 *                   stored.
 	 * @param size  The maximum number of bytes to be read.
@@ -850,7 +850,7 @@ public:
 	 * database cannot determine the length, the constant UNKNOWN_LENGTH is
 	 * returned.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @return             The length of a string in characters, NULL_DATA or
 	 *                     UNKNOWN_LENGTH.
 	 */
@@ -863,7 +863,7 @@ public:
 	 * The total length of the string can be found by calling the
 	 * getNStringLength() function.
 	 *
-	 * @param columnIndex  The column index starting from 1.
+	 * @param columnIndex  The column index starting from 0.
 	 * @param data         The pointer to a buffer where read data will be
 						   stored.
 	 * @param size         The maximum number of 16-bit characters to be read.
@@ -961,7 +961,7 @@ public:
 	/**
 	 * Retrieves the SQL type of the specified parameter.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @return            The SQL type.
 	 */
 	virtual short getParameterType(unsigned short paramIndex) = 0;
@@ -969,7 +969,7 @@ public:
 	/**
 	 * Retrieves the size of the column or expression measured in characters.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @return            The size in characters.
 	 */
 	virtual size_t getParameterSize(unsigned short paramIndex) = 0;
@@ -982,7 +982,7 @@ public:
 	 * sequence. For date, time and timestamp types, this is the length of their
 	 * string representation.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @return            The precision value.
 	 */
 	virtual unsigned short getPrecision(unsigned short paramIndex) = 0;
@@ -993,7 +993,7 @@ public:
 	 *
 	 * The function returns 0 for non-numeric data.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @return            The scale value.
 	 */
 	virtual unsigned short getScale(unsigned short paramIndex) = 0;
@@ -1001,7 +1001,7 @@ public:
 	/**
 	 * Determines whether the corresponding column accepts null values or not.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @return            True if the parameter accepts nulls, false otherwise.
 	 */
 	virtual bool isNullable(unsigned short paramIndex) = 0;
@@ -1061,7 +1061,7 @@ public:
 	/**
 	 * Sets the specified parameter to the given boolean value.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @param value       The parameter value.
 	 */
 	virtual void setBoolean(unsigned short paramIndex, bool value) = 0;
@@ -1069,56 +1069,56 @@ public:
 	/**
 	 * Sets the specified parameter to the given signed byte value.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @param value       The parameter value.
 	 */
 	virtual void setByte(unsigned short paramIndex, INT8 value) = 0;
 	/**
 	 * Sets the specified parameter to the given unsigned byte value.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @param value       The parameter value.
 	 */
 	virtual void setUByte(unsigned short paramIndex, UINT8 value) = 0;
 	/**
 	 * Sets the specified parameter to the given signed short integer value.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @param value       The parameter value.
 	 */
 	virtual void setShort(unsigned short paramIndex, INT16 value) = 0;
 	/**
 	 * Sets the specified parameter to the given unsigned short integer value.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @param value       The parameter value.
 	 */
 	virtual void setUShort(unsigned short paramIndex, UINT16 value) = 0;
 	/**
 	 * Sets the specified parameter to the given signed integer value.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @param value       The parameter value.
 	 */
 	virtual void setInt(unsigned short paramIndex, int value) = 0;
 	/**
 	 * Sets the specified parameter to the given unsigned integer value.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @param value       The parameter value.
 	 */
 	virtual void setUInt(unsigned short paramIndex, UINT value) = 0;
 	/**
 	 * Sets the specified parameter to the given signed long integer value.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @param value       The parameter value.
 	 */
 	virtual void setLong(unsigned short paramIndex, long long value) = 0;
 	/**
 	 * Sets the specified parameter to the given unsigned long integer value.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @param value       The parameter value.
 	 */
 	virtual void setULong(unsigned short paramIndex, unsigned long long value) = 0;
@@ -1126,7 +1126,7 @@ public:
 	///**
 	// * Sets the specified parameter to the given decimal value.
 	// *
-	// * @param paramIndex  The parameter index starting from 1.
+	// * @param paramIndex  The parameter index starting from 0.
 	// * @param value       The parameter value.
 	// */
 	//void setDecimal(unsigned short paramIndex, const Decimal& value) = 0;
@@ -1134,14 +1134,14 @@ public:
 	/**
 	 * Sets the specified parameter to the given float value.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @param value       The parameter value.
 	 */
 	virtual void setFloat(unsigned short paramIndex, float value) = 0;
 	/**
 	 * Sets the specified parameter to the given double value.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @param value       The parameter value.
 	 */
 	virtual void setDouble(unsigned short paramIndex, double value) = 0;
@@ -1149,7 +1149,7 @@ public:
 	 * Sets the specified parameter to the given null-terminated character
 	 * sequence (C-String).
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @param s           The null-terminated character sequence.
 	 */
 	virtual void setCString(unsigned short paramIndex, const char* s) = 0;
@@ -1157,7 +1157,7 @@ public:
 	 * Sets the specified parameter to the given character sequence of the
 	 * desired length.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @param s           The sequence of characters.
 	 * @param len         The length of the sequence.
 	 */
@@ -1166,7 +1166,7 @@ public:
 	 * Sets the specified parameter to the given null-terminated 16-bit
 	 * character sequence (C-String).
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @param s           The null-terminated character sequence.
 	 */
 	virtual void setNCString(unsigned short paramIndex, const char16_t* s) = 0;
@@ -1174,7 +1174,7 @@ public:
 	 * Sets the specified parameter to the given 16-bit character sequence of
 	 * the desired length.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @param s           The sequence of characters.
 	 * @param len         The length of the sequence.
 	 */
@@ -1183,7 +1183,7 @@ public:
 	 * Sets the specified parameter to the given byte sequence of the desired
 	 * length.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @param data        The sequence of bytes.
 	 * @param size        The length of the sequence.
 	 */
@@ -1192,21 +1192,21 @@ public:
 	/**
 	 * Sets the specified parameter to the given Date value.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @param value       The parameter value.
 	 */
 	virtual void setDate(unsigned short paramIndex, int year, int month, int day) = 0;
 	/**
 	 * Sets the specified parameter to the given Time value.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @param value       The parameter value.
 	 */
 	virtual void setTime(unsigned short paramIndex, int hour, int minute, int second) = 0;
 	/**
 	 * Sets the specified parameter to the given Timestamp value.
 	 *
-	 * @param paramIndex  The parameter index starting from 1.
+	 * @param paramIndex  The parameter index starting from 0.
 	 * @param value       The parameter value.
 	 */
 	virtual void setTimestamp(unsigned short paramIndex,
